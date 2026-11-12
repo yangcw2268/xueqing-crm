@@ -3,8 +3,9 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>学情同步笔 CRM 系统</title>
+  <title>学情同步笔 BMS 系统</title>
   <link rel="stylesheet" href="css/style.css">
+  <link rel="stylesheet" href="css/mobile.css">
 </head>
 <body>
 
@@ -12,54 +13,71 @@
   <aside class="sidebar" id="sidebar">
     <div class="sidebar-logo">
       <div class="logo-icon">笔</div>
-      <div class="logo-text">学情同步笔 CRM</div>
+      <div class="logo-text">学情同步笔 BMS</div>
       <button class="sidebar-toggle" id="sidebarToggle" onclick="toggleSidebar()" title="收起侧边栏">
         <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="15 18 9 12 15 6"/></svg>
       </button>
     </div>
 
     <nav class="sidebar-nav">
-      <div class="nav-item active" data-view="salesDashboard" title="销售工作台" onclick="showView('salesDashboard', this)">
-        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 9l9-7 9 7v11a2 2 0 01-2 2H5a2 2 0 01-2-2z"/><polyline points="9 22 9 12 15 12 15 22"/></svg>
-        <span class="nav-text">销售工作台</span>
+      <!-- 工作台 -->
+      <div class="nav-group">
+        <div class="nav-group-header">工作台</div>
+        <div class="nav-group-items">
+          <div class="nav-item active" data-view="dashboard" onclick="showView('dashboard', this)">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 9l9-7 9 7v11a2 2 0 01-2 2H5a2 2 0 01-2-2z"/><polyline points="9 22 9 12 15 12 15 22"/></svg>
+            <span class="nav-text">工作台</span>
+          </div>
+        </div>
       </div>
-      <div class="nav-item" data-view="operatorDashboard" title="运营工作台" onclick="showView('operatorDashboard', this)">
-        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="3"/><path d="M19.4 15a1.65 1.65 0 00.33 1.82l.06.06a2 2 0 01-2.83 2.83l-.06-.06a1.65 1.65 0 00-1.82-.33 1.65 1.65 0 00-1 1.51V21a2 2 0 01-4 0v-.09A1.65 1.65 0 009 19.4a1.65 1.65 0 00-1.82.33l-.06.06a2 2 0 01-2.83-2.83l.06-.06A1.65 1.65 0 004.68 15a1.65 1.65 0 00-1.51-1H3a2 2 0 010-4h.09A1.65 1.65 0 004.6 9a1.65 1.65 0 00-.33-1.82l-.06-.06a2 2 0 012.83-2.83l.06.06A1.65 1.65 0 009 4.68a1.65 1.65 0 001-1.51V3a2 2 0 014 0v.09a1.65 1.65 0 001 1.51 1.65 1.65 0 001.82-.33l.06-.06a2 2 0 012.83 2.83l-.06.06A1.65 1.65 0 0019.4 9a1.65 1.65 0 001.51 1H21a2 2 0 010 4h-.09a1.65 1.65 0 00-1.51 1z"/></svg>
-        <span class="nav-text">运营工作台</span>
+
+      <!-- 业务管理 -->
+      <div class="nav-group">
+        <div class="nav-group-header">业务管理</div>
+        <div class="nav-group-items">
+          <div class="nav-item" data-view="schoolList" onclick="showView('schoolList', this)">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 10v6M2 10l10-5 10 5-10 5z"/><path d="M6 12v5c0 2 4 3 6 3s6-1 6-3v-5"/></svg>
+            <span class="nav-text">学校管理</span>
+          </div>
+          <div class="nav-item" data-view="records" onclick="showView('records', this)">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M14 2H6a2 2 0 00-2 2v16a2 2 0 002 2h12a2 2 0 002-2V8z"/><polyline points="14 2 14 8 20 8"/><line x1="16" y1="13" x2="8" y2="13"/><line x1="16" y1="17" x2="8" y2="17"/><polyline points="10 9 9 9 8 9"/></svg>
+            <span class="nav-text">记录管理</span>
+          </div>
+        </div>
       </div>
-      <div class="nav-item" data-view="schoolList" title="学校管理" onclick="showView('schoolList', this)">
-        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 10v6M2 10l10-5 10 5-10 5z"/><path d="M6 12v5c0 2 4 3 6 3s6-1 6-3v-5"/></svg>
-        <span class="nav-text">学校管理</span>
-        <span class="badge">42</span>
-      </div>
-      <div class="nav-item" data-view="records" title="记录管理" onclick="showView('records', this)">
-        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M14 2H6a2 2 0 00-2 2v16a2 2 0 002 2h12a2 2 0 002-2V8z"/><polyline points="14 2 14 8 20 8"/><line x1="16" y1="13" x2="8" y2="13"/><line x1="16" y1="17" x2="8" y2="17"/><polyline points="10 9 9 9 8 9"/></svg>
-        <span class="nav-text">记录管理</span>
-      </div>
-      <div class="nav-item" data-view="users" title="用户与角色" onclick="showView('users', this)">
-        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M17 21v-2a4 4 0 00-4-4H5a4 4 0 00-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 00-3-3.87"/><path d="M16 3.13a4 4 0 010 7.75"/></svg>
-        <span class="nav-text">用户与角色</span>
-      </div>
-      <div class="nav-item" data-view="dataManagement" title="数据管理" onclick="showView('dataManagement', this)">
-        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><ellipse cx="12" cy="5" rx="9" ry="3"/><path d="M21 12c0 1.66-4 3-9 3s-9-1.34-9-3"/><path d="M3 5v14c0 1.66 4 3 9 3s9-1.34 9-3V5"/></svg>
-        <span class="nav-text">数据管理</span>
-      </div>
-      <div class="nav-item" data-view="operationLogs" title="操作日志" onclick="showView('operationLogs', this)">
-        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="22 12 18 12 15 21 9 3 6 12 2 12"/></svg>
-        <span class="nav-text">操作日志</span>
-      </div>
-      <div class="nav-divider" style="height:1px;background:#e0e0e0;margin:12px 16px;"></div>
-      <div class="nav-item" data-view="schoolDictionary" data-role="超级管理员" title="学校字典" onclick="showView('schoolDictionary', this)">
-        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 19.5A2.5 2.5 0 0 1 6.5 17H20"/><path d="M6.5 2H20v20H6.5A2.5 2.5 0 0 1 4 19.5v-15A2.5 2.5 0 0 1 6.5 2z"/></svg>
-        <span class="nav-text">学校字典</span>
+
+      <!-- 系统管理 -->
+      <div class="nav-group" id="systemManagementGroup">
+        <div class="nav-group-header collapsible" onclick="toggleNavGroup('systemManagementGroup')">
+          <span class="nav-group-title">系统管理</span>
+          <svg class="nav-group-arrow" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="6 9 12 15 18 9"/></svg>
+        </div>
+        <div class="nav-group-items">
+          <div class="nav-item" data-view="users" onclick="showView('users', this)">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M17 21v-2a4 4 0 00-4-4H5a4 4 0 00-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 00-3-3.87"/><path d="M16 3.13a4 4 0 010 7.75"/></svg>
+            <span class="nav-text">账户管理</span>
+          </div>
+          <div class="nav-item" data-view="dataManagement" onclick="showView('dataManagement', this)">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><ellipse cx="12" cy="5" rx="9" ry="3"/><path d="M21 12c0 1.66-4 3-9 3s-9-1.34-9-3"/><path d="M3 5v14c0 1.66 4 3 9 3s9-1.34 9-3V5"/></svg>
+            <span class="nav-text">数据管理</span>
+          </div>
+          <div class="nav-item" data-view="operationLogs" onclick="showView('operationLogs', this)">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="22 12 18 12 15 21 9 3 6 12 2 12"/></svg>
+            <span class="nav-text">操作日志</span>
+          </div>
+          <div class="nav-item" data-view="schoolDictionary" data-role="超级管理员" onclick="showView('schoolDictionary', this)">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 19.5A2.5 2.5 0 0 1 6.5 17H20"/><path d="M6.5 2H20v20H6.5A2.5 2.5 0 0 1 4 19.5v-15A2.5 2.5 0 0 1 6.5 2z"/></svg>
+            <span class="nav-text">学校字典</span>
+          </div>
+        </div>
       </div>
     </nav>
 
     <div class="sidebar-footer">
-      <div class="avatar">张</div>
+      <div class="avatar" id="userAvatar">张</div>
       <div class="user-info">
-        <div class="user-name">张三</div>
-        <div class="user-role">销售 · 华东区</div>
+        <div class="user-name" id="userName">加载中...</div>
+        <div class="user-role" id="userRole"></div>
       </div>
       <div class="logout-btn" title="退出登录" onclick="handleLogout()">
         <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M9 21H5a2 2 0 01-2-2V5a2 2 0 012-2h4"/><polyline points="16 17 21 12 16 7"/><line x1="21" y1="12" x2="9" y2="12"/></svg>
@@ -70,14 +88,17 @@
   <!-- ==================== Main Content ==================== -->
   <main class="main">
 
-    <!-- ========== Sales Dashboard ========== -->
-    <div id="salesDashboard-view" class="view active">
+    <!-- ========== Dashboard ========== -->
+    <div id="dashboard-view" class="view active">
       <div class="topbar">
-        <div class="topbar-title">销售工作台</div>
+        <button class="mobile-hamburger" id="mobileHamburger" onclick="openMobileDrawer()" style="display:none;background:none;border:none;padding:8px;min-width:44px;min-height:44px;cursor:pointer;">
+          <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="3" y1="12" x2="21" y2="12"/><line x1="3" y1="6" x2="21" y2="6"/><line x1="3" y1="18" x2="21" y2="18"/></svg>
+        </button>
+        <div class="topbar-title">工作台</div>
         <div class="topbar-actions">
-          <button class="btn btn-outline" onclick="openModal('followUpModal')">
+          <button class="btn btn-outline" onclick="openWorkRecordModal()">
             <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M11 4H4a2 2 0 00-2 2v14a2 2 0 002 2h14a2 2 0 002-2v-7"/><path d="M18.5 2.5a2.121 2.121 0 013 3L12 15l-4 1 1-4 9.5-9.5z"/></svg>
-            写跟进
+            写工作记录
           </button>
           <button class="btn btn-primary" onclick="openModal('newSchoolModal')">
             <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg>
@@ -88,343 +109,88 @@
 
       <div class="content">
         <!-- Stats -->
-        <div class="stats-grid cols-3 mb-24">
+        <div class="stats-grid cols-4 mb-24" id="salesStats">
           <div class="stat-card clickable" onclick="navigateToSchoolList('my-schools')">
             <div class="stat-label">我负责的学校</div>
-            <div class="stat-value">28<span class="unit">所</span></div>
-            <div class="stat-sub">推进中 15 所</div>
+            <div class="stat-value"><span id="statTotalSchools">0</span><span class="unit">所</span></div>
+            <div class="stat-sub badge-blue" id="statTotalSchoolsSub">加载中...</div>
           </div>
           <div class="stat-card clickable" onclick="navigateToSchoolList('signed-this-month')">
             <div class="stat-label">本月已签约</div>
-            <div class="stat-value">3<span class="unit">所</span></div>
-            <div class="stat-sub">签约金额 3.98 万</div>
+            <div class="stat-value"><span id="statSignedSchools">0</span><span class="unit">所</span></div>
+            <div class="stat-sub badge-green" id="statSignedSchoolsSub">加载中...</div>
           </div>
           <div class="stat-card clickable" onclick="navigateToSchoolList('negotiating')">
             <div class="stat-label">在谈学校</div>
-            <div class="stat-value">12<span class="unit">所</span></div>
-            <div class="stat-sub">商务谈判 5 所</div>
+            <div class="stat-value"><span id="statNegotiatingSchools">0</span><span class="unit">所</span></div>
+            <div class="stat-sub badge-orange" id="statNegotiatingSchoolsSub">加载中...</div>
+          </div>
+          <div class="stat-card">
+            <div class="stat-label">超期预警</div>
+            <div class="stat-value" style="color: #dc2626;"><span id="statOverdueWarnings">0</span><span class="unit">所</span></div>
+            <div class="stat-sub badge-red" id="statOverdueWarningsSub">加载中...</div>
           </div>
         </div>
 
-        <!-- Middle section -->
-        <div class="dashboard-grid mb-24">
-          <!-- Overdue warnings -->
-          <div class="card">
-            <div class="card-header">
-              <div class="card-title">超期预警</div>
-              <span class="text-sm text-muted">超过15天未跟进</span>
-            </div>
-            <div class="card-body">
-              <div class="warning-item">
-                <div class="warning-dot"></div>
-                <div class="warning-info">
-                  <div class="warning-name">光明实验小学</div>
-                  <div class="warning-desc">已超过15天未跟进</div>
-                </div>
-                <span class="warning-tag red">严重</span>
-              </div>
-              <div class="warning-item">
-                <div class="warning-dot"></div>
-                <div class="warning-info">
-                  <div class="warning-name">希望小学</div>
-                  <div class="warning-desc">已超过10天未跟进</div>
-                </div>
-                <span class="warning-tag red">严重</span>
-              </div>
-              <div class="warning-item">
-                <div class="warning-dot warn"></div>
-                <div class="warning-info">
-                  <div class="warning-name">育才中学</div>
-                  <div class="warning-desc">超过5天未跟进</div>
-                </div>
-                <span class="warning-tag yellow">注意</span>
-              </div>
-              <div class="warning-item">
-                <div class="warning-dot warn"></div>
-                <div class="warning-info">
-                  <div class="warning-name">蓝天幼儿园</div>
-                  <div class="warning-desc">超过4天未跟进</div>
-                </div>
-                <span class="warning-tag yellow">注意</span>
-              </div>
-            </div>
-          </div>
-
+        <!-- 第二行: 本月目标 | 本周计划 | 超期预警 -->
+        <div class="dashboard-grid cols-3 mb-24">
           <!-- Monthly target progress -->
-          <div class="card">
+          <div class="card mobile-dash-target">
             <div class="card-header">
               <div class="card-title">本月目标进度</div>
-              <div class="flex" style="gap: 8px; align-items: center;">
-                <span class="text-sm text-muted">2026年10月</span>
-                <button class="btn btn-sm btn-ghost" onclick="openTargetSettingsModal()">设置目标</button>
-              </div>
+              <span class="text-sm text-muted" id="targetProgressMonth"></span>
             </div>
-            <div class="card-body">
-              <div class="target-item">
-                <div class="target-header">
-                  <span class="target-name">拜访次数</span>
-                  <span class="target-percent">60%</span>
-                </div>
-                <div class="progress-bar"><div class="fill" style="width:60%"></div></div>
-                <div class="target-detail">12 / 20 次</div>
-              </div>
-              <div class="target-item">
-                <div class="target-header">
-                  <span class="target-name">签约学校数</span>
-                  <span class="target-percent">33%</span>
-                </div>
-                <div class="progress-bar"><div class="fill" style="width:33%"></div></div>
-                <div class="target-detail">1 / 3 所</div>
-              </div>
-              <div class="target-item">
-                <div class="target-header">
-                  <span class="target-name">销售目标（签约金额）</span>
-                  <span class="target-percent">40%</span>
-                </div>
-                <div class="progress-bar"><div class="fill green" style="width:40%"></div></div>
-                <div class="target-detail">3.98 万 / 10 万</div>
-              </div>
-              <div class="target-item">
-                <div class="target-header">
-                  <span class="target-name">自定义：回款金额</span>
-                  <span class="target-percent">40%</span>
-                </div>
-                <div class="progress-bar"><div class="fill yellow" style="width:40%"></div></div>
-                <div class="target-detail">2 万 / 5 万</div>
-              </div>
+            <div class="card-body" id="targetProgressContainer">
+              <!-- 动态渲染 -->
             </div>
           </div>
-        </div>
 
-        <!-- Recent follow-ups -->
-        <div class="card">
-          <div class="card-header">
-            <div class="card-title">最近跟进记录</div>
-            <span class="text-link" onclick="showView('records', document.querySelector('[data-view=records]'))">查看全部</span>
+          <!-- Week plan -->
+          <div class="card mobile-dash-plan">
+            <div class="card-header">
+              <div class="card-title">本周工作计划</div>
+            </div>
+            <div class="card-body" id="weekPlanList">
+              <!-- 动态渲染 -->
+            </div>
           </div>
-          <div class="table-wrapper">
-            <table>
-              <thead>
-                <tr>
-                  <th>学校</th>
-                  <th>时间</th>
-                  <th>类型</th>
-                  <th>跟进内容</th>
-                </tr>
-              </thead>
-              <tbody>
-                <tr>
-                  <td><span class="text-link" onclick="showSchoolDetail(1)">阳光小学</span></td>
-                  <td>2026-10-14 16:30</td>
-                  <td><span class="badge badge-blue">面谈</span></td>
-                  <td>与校长沟通新学期设备采购计划，预计11月确定</td>
-                </tr>
-                <tr>
-                  <td><span class="text-link" onclick="showSchoolDetail(6)">建设路中学</span></td>
-                  <td>2026-10-14 10:00</td>
-                  <td><span class="badge badge-gray">电话</span></td>
-                  <td>确认合同金额，对方同意按原方案执行</td>
-                </tr>
-                <tr>
-                  <td><span class="text-link" onclick="showSchoolDetail(7)">红星实验小学</span></td>
-                  <td>2026-10-13 14:00</td>
-                  <td><span class="badge badge-blue">面谈</span></td>
-                  <td>提交产品演示，校方表示满意，等待招标</td>
-                </tr>
-              </tbody>
-            </table>
+
+          <!-- Overdue warnings -->
+          <div class="card mobile-dash-overdue">
+            <div class="card-header">
+              <div class="card-title">超期预警</div>
+              <span class="text-sm text-muted">&#62;15天严重 &#62;10天注意</span>
+            </div>
+            <div class="card-body" id="overdueWarningsList">
+              <!-- 动态渲染 -->
+            </div>
           </div>
         </div>
       </div>
     </div>
 
-    <!-- ========== Operator Dashboard ========== -->
-    <div id="operatorDashboard-view" class="view">
-      <div class="topbar">
-        <div class="topbar-title">运营工作台</div>
-        <div class="topbar-actions">
-          <button class="btn btn-primary" onclick="openOperationLogModal()">
-            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg>
-            写运营记录
-          </button>
-        </div>
-      </div>
-      <div class="content">
-        <!-- 1. 顶部统计卡片 - 4个 -->
-        <div class="stats-grid mb-24">
-          <div class="stat-card">
-            <div class="stat-label">运营学校</div>
-            <div class="stat-value">15<span class="unit">所</span></div>
-          </div>
-          <div class="stat-card">
-            <div class="stat-label">待交接确认</div>
-            <div class="stat-value" style="color:#dc2626;">2<span class="unit" style="color:#dc2626;">所</span></div>
-          </div>
-          <div class="stat-card">
-            <div class="stat-label">实施中</div>
-            <div class="stat-value">3<span class="unit">所</span></div>
-          </div>
-          <div class="stat-card">
-            <div class="stat-label">服务中</div>
-            <div class="stat-value">12<span class="unit">所</span></div>
-          </div>
-        </div>
-
-        <!-- 2. 中间两栏布局 -->
-        <div class="two-col-grid mb-24">
-          <!-- 左栏：待交接确认列表 -->
-          <div class="card">
-            <div class="card-header">
-              <div class="card-title">待交接确认</div>
-            </div>
-            <div class="card-body" id="pendingHandoverList">
-              <div class="warning-item" id="pendingHandover-阳光小学">
-                <div class="warning-dot warn"></div>
-                <div class="warning-info">
-                  <div class="warning-name">阳光小学</div>
-                  <div class="warning-desc">销售：张三 - 已进入商务谈判，待签约后交接运营</div>
-                </div>
-                <span class="warning-tag yellow">待确认</span>
-                <div style="display:flex;gap:6px;flex-shrink:0;">
-                  <button class="btn btn-primary btn-xs" onclick="requestConfirmHandover('阳光小学')">确认接收</button>
-                  <button class="btn btn-xs" style="background:#dc2626;color:#fff;" onclick="rejectHandover('阳光小学')">拒绝</button>
-                </div>
-              </div>
-              <div class="warning-item" id="pendingHandover-红星实验小学">
-                <div class="warning-dot warn"></div>
-                <div class="warning-info">
-                  <div class="warning-name">红星实验小学</div>
-                  <div class="warning-desc">销售：张三 - 方案报价已完成，待商务谈判后交接</div>
-                </div>
-                <span class="warning-tag yellow">待确认</span>
-                <div style="display:flex;gap:6px;flex-shrink:0;">
-                  <button class="btn btn-primary btn-xs" onclick="requestConfirmHandover('红星实验小学')">确认接收</button>
-                  <button class="btn btn-xs" style="background:#dc2626;color:#fff;" onclick="rejectHandover('红星实验小学')">拒绝</button>
-                </div>
-              </div>
-            </div>
-          </div>
-
-          <!-- 右栏：最近服务动态 -->
-          <div class="card">
-            <div class="card-header">
-              <div class="card-title">最近服务动态</div>
-              <span class="text-link" onclick="goToOperatorRecords()">查看全部</span>
-            </div>
-            <div class="card-body">
-              <div class="warning-item">
-                <span class="badge badge-purple">服务</span>
-                <div class="warning-info">
-                  <div class="warning-name">育才中学</div>
-                  <div class="warning-desc">每周学情报告已生成并发送 - 2026-10-13</div>
-                </div>
-              </div>
-              <div class="warning-item">
-                <span class="badge badge-blue">巡检</span>
-                <div class="warning-info">
-                  <div class="warning-name">希望小学</div>
-                  <div class="warning-desc">设备巡检，3台设备异常已处理 - 2026-10-12</div>
-                </div>
-              </div>
-              <div class="warning-item">
-                <span class="badge badge-purple">服务</span>
-                <div class="warning-info">
-                  <div class="warning-name">东风路小学</div>
-                  <div class="warning-desc">月度运营报告已提交 - 2026-10-11</div>
-                </div>
-              </div>
-              <div class="warning-item">
-                <span class="badge badge-green">回访</span>
-                <div class="warning-info">
-                  <div class="warning-name">光明实验小学</div>
-                  <div class="warning-desc">家长满意度回访完成，满意度95% - 2026-10-10</div>
-                </div>
-              </div>
-              <div class="warning-item">
-                <span class="badge badge-pink">培训</span>
-                <div class="warning-info">
-                  <div class="warning-name">育才中学</div>
-                  <div class="warning-desc">系统培训已完成，参训教师20人 - 2026-10-09</div>
-                </div>
-              </div>
-            </div>
-          </div>
-        </div>
-
-        <!-- 3. 底部：负责学校列表 -->
-        <div class="card">
-          <div class="card-header">
-            <div class="card-title">负责学校</div>
-            <span class="text-link" onclick="goToMySchools()">查看全部</span>
-          </div>
-          <div class="table-wrapper">
-            <table>
-              <thead>
-                <tr>
-                  <th>学校名称</th>
-                  <th>状态</th>
-                  <th>归属销售</th>
-                  <th>最近服务时间</th>
-                  <th>操作</th>
-                </tr>
-              </thead>
-              <tbody>
-                <tr>
-                  <td><span class="text-link" onclick="openSchoolDetail(4)">育才中学</span></td>
-                  <td><span class="badge badge-green">服务中</span></td>
-                  <td>李四</td>
-                  <td>2026-10-15</td>
-                  <td><span class="text-link" onclick="openSchoolDetail(4)">详情</span></td>
-                </tr>
-                <tr>
-                  <td><span class="text-link" onclick="openSchoolDetail(3)">希望小学</span></td>
-                  <td><span class="badge badge-green">已签约</span></td>
-                  <td>李四</td>
-                  <td>2026-10-12</td>
-                  <td><span class="text-link" onclick="openSchoolDetail(3)">详情</span></td>
-                </tr>
-                <tr>
-                  <td><span class="text-link" onclick="openSchoolDetail(9)">翠湖小学</span></td>
-                  <td><span class="badge badge-red">已终止</span></td>
-                  <td>李四</td>
-                  <td>2026-10-08</td>
-                  <td><span class="text-link" onclick="openSchoolDetail(9)">详情</span></td>
-                </tr>
-              </tbody>
-            </table>
-          </div>
-        </div>
-      </div>
-    </div>
 
     <!-- ========== School List ========== -->
     <div id="schoolList-view" class="view">
       <div class="topbar">
         <div class="topbar-title">学校管理</div>
         <div class="topbar-actions">
-          <button class="btn btn-primary" onclick="openModal('newSchoolModal')">
+          <button id="schoolExportBtn" class="btn btn-outline pc-only" onclick="exportSchoolList()">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" width="16" height="16"><path d="M21 15v4a2 2 0 01-2 2H5a2 2 0 01-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/></svg>
+            导出
+          </button>
+          <button id="schoolNewSchoolBtn" class="btn btn-primary" onclick="openModal('newSchoolModal')">
             <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg>
             新建学校
           </button>
         </div>
       </div>
       <div class="content">
-        <!-- Status tabs -->
-        <div class="tabs mb-16">
-          <div class="tab-item active" onclick="filterSchoolsByStatus('全部')">全部 (10)</div>
-          <div class="tab-item" onclick="filterSchoolsByStatus('初步接触')">初步接触 (0)</div>
-          <div class="tab-item" onclick="filterSchoolsByStatus('意向')">意向 (1)</div>
-          <div class="tab-item" onclick="filterSchoolsByStatus('方案报价')">方案报价 (1)</div>
-          <div class="tab-item" onclick="filterSchoolsByStatus('商务谈判')">商务谈判 (2)</div>
-          <div class="tab-item" onclick="filterSchoolsByStatus('已签约')">已签约 (1)</div>
-          <div class="tab-item" onclick="filterSchoolsByStatus('实施中')">实施中 (1)</div>
-          <div class="tab-item" onclick="filterSchoolsByStatus('服务中')">服务中 (2)</div>
-          <div class="tab-item" onclick="filterSchoolsByStatus('暂停中')">暂停中 (1)</div>
-          <div class="tab-item" onclick="filterSchoolsByStatus('已终止')">已终止 (1)</div>
-        </div>
+        <!-- Status tabs (动态渲染) -->
+        <div class="tabs mb-16" id="school-status-tabs"></div>
 
-        <!-- Filters -->
-        <div class="filter-bar">
+        <!-- Filters (PC端) -->
+        <div class="filter-bar pc-only">
           <input type="text" class="search-input" id="schoolsTableInput" placeholder="搜索学校名称..." onkeypress="if(event.key==='Enter')searchSchools()">
           <select class="select-input" id="schoolDeptFilter">
             <option value="">全部部门</option>
@@ -441,8 +207,21 @@
           <button class="btn btn-outline" onclick="searchSchools()">搜索</button>
         </div>
 
-        <!-- Table -->
-        <div class="card">
+        <!-- 移动端筛选区 -->
+        <div class="mobile-school-filter">
+          <input type="text" class="mobile-search-input" id="mobileSchoolSearchInput" placeholder="搜索学校名称..." onkeypress="if(event.key==='Enter')mobileSchoolSearch()">
+          <div class="mobile-status-chips" id="mobileStatusChips">
+            <span class="status-chip active" data-status="" onclick="selectMobileStatus(this)">全部</span>
+            <span class="status-chip" data-status="初步接触" onclick="selectMobileStatus(this)">初步接触</span>
+            <span class="status-chip" data-status="有意向" onclick="selectMobileStatus(this)">有意向</span>
+            <span class="status-chip" data-status="方案沟通" onclick="selectMobileStatus(this)">方案沟通</span>
+            <span class="status-chip" data-status="已签约" onclick="selectMobileStatus(this)">已签约</span>
+            <span class="status-chip" data-status="运营中" onclick="selectMobileStatus(this)">运营中</span>
+          </div>
+        </div>
+
+        <!-- Table (PC端) -->
+        <div class="card pc-only">
           <div class="table-wrapper">
             <table>
               <thead>
@@ -450,11 +229,11 @@
                   <th>学校名称</th>
                   <th>所属部门</th>
                   <th>区域</th>
-                  <th>学段</th>
                   <th>状态</th>
-                  <th>归属销售</th>
-                  <th>归属运营</th>
-                  <th>最近跟进</th>
+                  <th>销售人员</th>
+                  <th>运营人员</th>
+                  <th>最新跟进时间</th>
+                  <th>新建学校时间</th>
                   <th>操作</th>
                 </tr>
               </thead>
@@ -463,24 +242,42 @@
             </table>
           </div>
         </div>
+
+        <!-- 移动端卡片列表 -->
+        <div class="mobile-card-list" id="mobileSchoolCardList"></div>
       </div>
     </div>
 
     <!-- ========== School Detail ========== -->
     <div id="schoolDetail-view" class="view">
       <div class="topbar">
+        <button class="mobile-back-btn" onclick="goBackToSchoolList()" style="display:none;background:none;border:none;padding:8px;min-width:44px;min-height:44px;cursor:pointer;margin-right:4px;">
+          <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="15 18 9 12 15 6"/></svg>
+        </button>
         <div class="topbar-breadcrumb">
           <span class="text-link" onclick="showView('schoolList', document.querySelector('[data-view=schoolList]'))">学校管理</span>
-          / <span>阳光小学</span>
+          / <span id="detailBreadcrumbName">阳光小学</span>
         </div>
         <div class="topbar-actions">
           <button class="btn btn-ghost btn-sm" onclick="openConfirmModal('确定要编辑此学校信息吗？', function() { showToast('编辑功能开发中', 'warning'); })">
             <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" width="14" height="14"><path d="M11 4H4a2 2 0 00-2 2v14a2 2 0 002 2h14a2 2 0 002-2v-7"/><path d="M18.5 2.5a2.121 2.121 0 013 3L12 15l-4 1 1-4 9.5-9.5z"/></svg>
             编辑
           </button>
-          <button class="btn btn-outline" onclick="openModal('followUpModal')">
+          <button id="detailWorkRecordBtn" class="btn btn-primary" onclick="openWorkRecordModal(schoolDetail.name)">
             <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" width="14" height="14"><path d="M11 4H4a2 2 0 00-2 2v14a2 2 0 002 2h14a2 2 0 002-2v-7"/><path d="M18.5 2.5a2.121 2.121 0 013 3L12 15l-4 1 1-4 9.5-9.5z"/></svg>
-            写跟进记录
+            写工作记录
+          </button>
+          <button class="btn btn-outline" onclick="openModal('contractModal')">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" width="14" height="14"><path d="M21 15v4a2 2 0 01-2 2H5a2 2 0 01-2-2v-4"/><polyline points="17 8 12 3 7 8"/><line x1="12" y1="3" x2="12" y2="15"/></svg>
+            上传合同
+          </button>
+          <button class="btn btn-outline" onclick="openModal('deviceDeploymentModal')">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" width="14" height="14"><rect x="2" y="3" width="20" height="14" rx="2" ry="2"/><line x1="8" y1="21" x2="16" y2="21"/><line x1="12" y1="17" x2="12" y2="21"/></svg>
+            设备投放
+          </button>
+          <button class="btn btn-outline" onclick="openOperatorConfigModal()">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" width="14" height="14"><path d="M17 21v-2a4 4 0 00-4-4H5a4 4 0 00-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 00-3-3.87"/><path d="M16 3.13a4 4 0 010 7.75"/></svg>
+            配置运营人员
           </button>
         </div>
       </div>
@@ -491,11 +288,11 @@
           <div class="card-body" style="display:flex;align-items:flex-start;justify-content:space-between;">
             <div>
               <div style="display:flex;align-items:center;gap:10px;margin-bottom:6px;">
-                <h2 style="font-size:20px;font-weight:600;color:#0f172a;margin:0;">阳光小学</h2>
-                <span id="schoolHeaderBadge" class="badge badge-blue">方案报价</span>
+                <h2 id="detailTitle" style="font-size:20px;font-weight:600;color:#0f172a;margin:0;">阳光小学</h2>
+                <span id="schoolHeaderBadge" class="badge badge-blue">初步接触</span>
               </div>
-              <div style="font-size:13px;color:#64748b;">
-                创建时间：2026-09-01 · 最近更新：2026-10-14 · 归属销售：张三 · 归属运营：赵六
+              <div id="detailMeta" style="font-size:13px;color:#64748b;">
+                创建时间：2026-09-01 · 销售人员：张三
               </div>
             </div>
           </div>
@@ -513,7 +310,6 @@
               <button class="btn btn-outline btn-sm" onclick="pauseSchool()">暂停推进</button>
               <button class="btn btn-outline btn-sm" style="color:#dc2626;border-color:#fecaca;" onclick="terminateSchool()">终止推进</button>
               <button class="btn btn-sm btn-resume" style="background:#64748b;color:#fff;display:none;" onclick="resumeSchool()">恢复推进</button>
-              <button class="btn btn-sm" style="background:#7c3aed;color:#fff;" id="handoverBtn" onclick="openHandoverModal()" title="交接给运营">交接给运营</button>
             </div>
           </div>
         </div>
@@ -531,31 +327,31 @@
                 <div class="info-grid">
                   <div class="info-item">
                     <span class="info-label">学校名称</span>
-                    <span class="info-value">阳光小学</span>
+                    <span class="info-value" id="detailSchoolName">阳光小学</span>
                   </div>
                   <div class="info-item">
                     <span class="info-label">所属部门</span>
-                    <span class="info-value">华东区</span>
+                    <span class="info-value" id="detailDept">华东区</span>
                   </div>
                   <div class="info-item">
                     <span class="info-label">区域</span>
-                    <span class="info-value">广州·越秀区</span>
+                    <span class="info-value" id="detailRegion">广州·越秀区</span>
                   </div>
                   <div class="info-item">
                     <span class="info-label">学段</span>
-                    <span class="info-value">小学</span>
+                    <span class="info-value" id="detailGrade">小学</span>
                   </div>
                   <div class="info-item">
                     <span class="info-label">类型</span>
-                    <span class="info-value">公办</span>
+                    <span class="info-value" id="detailType">公办</span>
                   </div>
                   <div class="info-item">
-                    <span class="info-label">来源渠道</span>
-                    <span class="info-value">展会</span>
+                    <span class="info-label">运营人员</span>
+                    <span class="info-value" id="detailOperator">-</span>
                   </div>
-                  <div class="info-item" style="grid-column: span 2;">
+                  <div class="info-item">
                     <span class="info-label">当前阶段</span>
-                    <span class="info-value"><span id="basicInfoStatusBadge" class="badge badge-blue">方案报价</span></span>
+                    <span class="info-value"><span id="basicInfoStatusBadge" class="badge badge-blue">初步接触</span></span>
                   </div>
                 </div>
               </div>
@@ -564,31 +360,11 @@
             <!-- Contacts -->
             <div class="card">
               <div class="card-header">
-                <div class="card-title">联系人</div>
+                <div class="card-title">学校联系人</div>
                 <button class="btn btn-ghost btn-sm" onclick="openAddContactModal()">+ 添加</button>
               </div>
               <div class="card-body" style="padding:12px 20px;">
-                <div class="contact-card">
-                  <div class="contact-avatar" style="background:#3b82f6;">李</div>
-                  <div class="contact-info">
-                    <div class="contact-name">李校长 <span class="badge badge-red">决策人</span></div>
-                    <div class="contact-meta">校长 · 13800138001</div>
-                  </div>
-                </div>
-                <div class="contact-card">
-                  <div class="contact-avatar" style="background:#10b981;">李</div>
-                  <div class="contact-info">
-                    <div class="contact-name">李老师 <span class="badge badge-blue">对接人</span></div>
-                    <div class="contact-meta">教务主任 · 13800138011</div>
-                  </div>
-                </div>
-                <div class="contact-card">
-                  <div class="contact-avatar" style="background:#8b5cf6;">王</div>
-                  <div class="contact-info">
-                    <div class="contact-name">王老师 <span class="badge badge-purple">技术负责人</span></div>
-                    <div class="contact-meta">信息中心主任 · 13800138012</div>
-                  </div>
-                </div>
+                <div id="contactsContainer"></div>
               </div>
             </div>
           </div>
@@ -597,96 +373,25 @@
           <div class="card">
             <div class="card-header">
               <div class="tabs" style="margin-bottom:0;border-bottom:none;">
-                <div class="tab-item active" onclick="switchDetailTab(this, 'followUps')">跟进记录</div>
+                <div class="tab-item active" onclick="switchDetailTab(this, 'workRecords')">工作记录</div>
                 <div class="tab-item" onclick="switchDetailTab(this, 'contracts')">合同信息</div>
                 <div class="tab-item" onclick="switchDetailTab(this, 'devices')">设备投放</div>
-                <div class="tab-item" onclick="switchDetailTab(this, 'operations')">运营记录</div>
                 <div class="tab-item" onclick="switchDetailTab(this, 'logs')">操作日志</div>
               </div>
             </div>
 
-            <!-- Follow-ups - timeline format -->
-            <div id="detail-followUps" class="detail-tab-content active" style="padding:20px;">
-              <div class="timeline" id="followUpTimeline">
-                <div class="timeline-item">
-                  <div class="timeline-dot"></div>
-                  <div class="timeline-header">
-                    <div class="timeline-left">
-                      <span class="timeline-method badge" style="background:#dbeafe;color:#1d4ed8;">电话</span>
-                      <span class="timeline-operator">张三</span>
-                    </div>
-                    <span class="timeline-time">2026-10-14 16:30</span>
-                  </div>
-                  <div class="timeline-body">
-                    <div>与校长沟通新学期设备采购计划，预计11月确定预算，下周三再次拜访。</div>
-                    <div class="timeline-next-step">下一步计划：下周三带方案上门拜访，确认预算范围。</div>
-                  </div>
-                </div>
-
-                <div class="timeline-item">
-                  <div class="timeline-dot"></div>
-                  <div class="timeline-header">
-                    <div class="timeline-left">
-                      <span class="timeline-method badge" style="background:#dcfce7;color:#166534;">上门拜访</span>
-                      <span class="timeline-operator">张三</span>
-                    </div>
-                    <span class="timeline-time">2026-10-10 10:00</span>
-                  </div>
-                  <div class="timeline-body">
-                    <div>确认校长时间安排，约定下周面谈。</div>
-                  </div>
-                </div>
-
-                <div class="timeline-item">
-                  <div class="timeline-dot"></div>
-                  <div class="timeline-header">
-                    <div class="timeline-left">
-                      <span class="timeline-method badge" style="background:#fef3c7;color:#92400e;">微信</span>
-                      <span class="timeline-operator">张三</span>
-                    </div>
-                    <span class="timeline-time">2026-10-05 14:00</span>
-                  </div>
-                  <div class="timeline-body">
-                    <div>首次拜访，了解学校信息化现状，校方表示有兴趣尝试。</div>
-                    <div class="timeline-next-step">下一步计划：准备学校现状调研报告，预约下次上门拜访。</div>
-                  </div>
-                </div>
-
-                <div class="timeline-item">
-                  <div class="timeline-dot"></div>
-                  <div class="timeline-header">
-                    <div class="timeline-left">
-                      <span class="timeline-operator">系统</span>
-                    </div>
-                    <span class="timeline-time">2026-09-20 09:00</span>
-                  </div>
-                  <div class="timeline-body">
-                    <div>创建学校线索，来源：展会获取。</div>
-                  </div>
-                </div>
-              </div>
+            <!-- Work records - timeline format -->
+            <div id="detail-workRecords" class="detail-tab-content active" style="padding:20px;">
+              <div class="timeline" id="followUpTimeline"></div>
             </div>
 
             <!-- Contracts -->
             <div id="detail-contracts" class="detail-tab-content" style="padding:16px 20px;display:none;">
-              <div style="margin-bottom:16px;">
-                <button class="btn btn-primary btn-sm" onclick="openModal('contractModal')">
-                  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" width="14" height="14"><path d="M21 15v4a2 2 0 01-2 2H5a2 2 0 01-2-2v-4"/><polyline points="17 8 12 3 7 8"/><line x1="12" y1="3" x2="12" y2="15"/></svg>
-                  上传合同
-                </button>
-              </div>
               <table>
                 <thead>
                   <tr><th>合同编号</th><th>签约时间</th><th>文件</th><th>备注</th></tr>
                 </thead>
-                <tbody id="contractTableBody">
-                  <tr>
-                    <td>HT-2026-001</td>
-                    <td>-</td>
-                    <td><span class="text-link">合同草稿.pdf</span></td>
-                    <td>-</td>
-                  </tr>
-                </tbody>
+                <tbody id="contractTableBody"></tbody>
               </table>
             </div>
 
@@ -696,61 +401,8 @@
                 <thead>
                   <tr><th>投放日期</th><th>设备类型</th><th>数量</th><th>投放状态</th><th>操作人</th></tr>
                 </thead>
-                <tbody>
-                  <tr>
-                    <td>2026-10-01</td>
-                    <td>学情同步笔</td>
-                    <td>500台</td>
-                    <td><span class="badge badge-green">已投放</span></td>
-                    <td>赵六</td>
-                  </tr>
-                </tbody>
+                <tbody id="deviceDeploymentTableBody"></tbody>
               </table>
-            </div>
-
-            <!-- Operations -->
-            <div id="detail-operations" class="detail-tab-content" style="padding:16px 20px;display:none;">
-              <div class="timeline">
-                <div class="timeline-item">
-                  <div class="timeline-dot"></div>
-                  <div class="timeline-header">
-                    <div class="timeline-left">
-                      <span class="timeline-operator">赵六</span>
-                    </div>
-                    <span class="timeline-time">2026-10-12 14:00</span>
-                  </div>
-                  <div class="timeline-body">
-                    <div>完成全校500台同步笔设备调试，检查网络连接正常，设备激活率100%。</div>
-                    <div class="timeline-next-step">服务反馈：校方对设备运行满意，无异常情况。</div>
-                  </div>
-                </div>
-
-                <div class="timeline-item">
-                  <div class="timeline-dot"></div>
-                  <div class="timeline-header">
-                    <div class="timeline-left">
-                      <span class="timeline-operator">赵六</span>
-                    </div>
-                    <span class="timeline-time">2026-10-05 10:00</span>
-                  </div>
-                  <div class="timeline-body">
-                    <div>组织教师使用培训，覆盖各学科骨干教师30人，演示同步笔基本功能与课堂应用场景。</div>
-                  </div>
-                </div>
-
-                <div class="timeline-item">
-                  <div class="timeline-dot"></div>
-                  <div class="timeline-header">
-                    <div class="timeline-left">
-                      <span class="timeline-operator">赵六</span>
-                    </div>
-                    <span class="timeline-time">2026-09-28 09:00</span>
-                  </div>
-                  <div class="timeline-body">
-                    <div>设备到货验收，清点500台同步笔及配件，确认无误后安排下周交付。</div>
-                  </div>
-                </div>
-              </div>
             </div>
 
             <!-- Logs -->
@@ -759,12 +411,7 @@
                 <thead>
                   <tr><th>时间</th><th>操作人</th><th>操作</th><th>详情</th></tr>
                 </thead>
-                <tbody>
-                  <tr><td>2026-10-14 16:30</td><td>张三</td><td>写跟进记录</td><td>电话 - 与校长沟通采购计划</td></tr>
-                  <tr><td>2026-10-10 10:00</td><td>张三</td><td>写跟进记录</td><td>电话 - 确认时间</td></tr>
-                  <tr><td>2026-10-05 14:00</td><td>张三</td><td>状态变更</td><td>意向 -> 方案报价</td></tr>
-                  <tr><td>2026-09-20 09:00</td><td>张三</td><td>创建学校</td><td>新建学校 - 阳光小学</td></tr>
-                </tbody>
+                <tbody id="schoolDetailLogsBody"></tbody>
               </table>
             </div>
           </div>
@@ -775,16 +422,18 @@
     <!-- ========== Records ========== -->
     <div id="records-view" class="view">
       <div class="topbar">
-        <div class="topbar-title">记录管理</div>
+        <button class="mobile-hamburger" onclick="openMobileDrawer()" style="display:none;background:none;border:none;padding:8px;min-width:44px;min-height:44px;cursor:pointer;">
+          <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="3" y1="12" x2="21" y2="12"/><line x1="3" y1="6" x2="21" y2="6"/><line x1="3" y1="18" x2="21" y2="18"/></svg>
+        </button>
+        <div class="topbar-title">工作记录</div>
       </div>
       <div class="content">
-        <div class="tabs mb-16">
-          <div class="tab-item active" onclick="switchRecordTab(this, 'all')">全部 (7)</div>
-          <div class="tab-item" onclick="switchRecordTab(this, 'sales')">销售记录 (4)</div>
-          <div class="tab-item" onclick="switchRecordTab(this, 'operator')">运营记录 (3)</div>
+        <div class="tabs mb-16" id="recordsTabBar">
+          <div class="tab-item active" onclick="switchRecordTab(this, 'all')">工作记录</div>
         </div>
 
-        <div class="filter-bar">
+        <!-- PC端筛选区 -->
+        <div class="filter-bar pc-only">
           <input type="text" class="search-input" id="recordsTableInput" placeholder="搜索学校名称、内容..." onkeypress="if(event.key==='Enter')searchRecords()" style="width:280px;">
           <button class="btn btn-outline" onclick="searchRecords()">搜索</button>
           <input type="date" class="search-input" style="width:180px;">
@@ -792,17 +441,23 @@
           <input type="date" class="search-input" style="width:180px;">
         </div>
 
-        <div class="card">
+        <!-- 移动端筛选区 -->
+        <div class="mobile-records-filter">
+          <input type="text" class="mobile-search-input" id="mobileRecordsSearchInput" placeholder="搜索学校名称/内容..." onkeypress="if(event.key==='Enter')mobileRecordsSearch()">
+        </div>
+
+        <!-- PC端表格 -->
+        <div class="card pc-only">
           <div class="table-wrapper">
-            <table>
+            <table style="table-layout:fixed;">
               <thead>
                 <tr>
-                  <th>时间</th>
-                  <th>学校</th>
-                  <th>类型</th>
-                  <th>操作人</th>
-                  <th>方式</th>
-                  <th>内容</th>
+                  <th style="width:12%;">时间</th>
+                  <th style="width:15%;">学校</th>
+                  <th style="width:10%;">学校状态</th>
+                  <th style="width:25%;">内容</th>
+                  <th style="width:25%;">下一步计划</th>
+                  <th style="width:13%;">提交人</th>
                 </tr>
               </thead>
               <tbody id="records-tbody">
@@ -810,14 +465,24 @@
             </table>
           </div>
         </div>
+
+        <!-- 移动端卡片列表 -->
+        <div class="mobile-card-list" id="mobileRecordsCardList"></div>
       </div>
     </div>
 
     <!-- ========== Users & Roles ========== -->
     <div id="users-view" class="view">
       <div class="topbar">
-        <div class="topbar-title">用户与角色</div>
+        <button class="mobile-hamburger" onclick="openMobileDrawer()" style="display:none;background:none;border:none;padding:8px;min-width:44px;min-height:44px;cursor:pointer;">
+          <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="3" y1="12" x2="21" y2="12"/><line x1="3" y1="6" x2="21" y2="6"/><line x1="3" y1="18" x2="21" y2="18"/></svg>
+        </button>
+        <div class="topbar-title">账户管理</div>
         <div class="topbar-actions">
+          <button class="btn btn-outline" onclick="openImportModal('account')">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/></svg>
+            批量导入账号
+          </button>
           <button class="btn btn-primary" onclick="openAddUserModal()">
             <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg>
             新增用户
@@ -826,19 +491,29 @@
       </div>
       <div class="content">
         <div class="card">
+          <div class="filter-bar mb-24" style="display:flex;gap:12px;flex-wrap:wrap;">
+            <select id="filter-dept" class="form-select" style="width:160px;" onchange="applyUserFilters()">
+              <option value="">全部部门</option>
+            </select>
+            <select id="filter-role" class="form-select" style="width:140px;" onchange="applyUserFilters()">
+              <option value="">全部角色</option>
+              <option value="超级管理员">超级管理员</option>
+              <option value="员工">员工</option>
+              <option value="一级部门负责人">一级部门负责人</option>
+              <option value="财务">财务</option>
+            </select>
+            <select id="filter-status" class="form-select" style="width:120px;" onchange="applyUserFilters()">
+              <option value="">全部状态</option>
+              <option value="启用">启用</option>
+              <option value="停用">停用</option>
+            </select>
+          </div>
           <div class="table-wrapper">
             <table>
               <thead>
-                <tr><th>姓名</th><th>角色</th><th>部门</th><th>电话</th><th>状态</th><th>操作</th></tr>
+                <tr><th>姓名</th><th>角色</th><th>部门</th><th>电话</th><th>飞书ID</th><th>新增方式</th><th>新增时间</th><th>允许密码登录</th><th>状态</th><th>操作</th></tr>
               </thead>
-              <tbody>
-                <tr><td>张三</td><td><span class="badge badge-blue">销售</span></td><td>华东区</td><td>13800138001</td><td><span class="badge badge-green">启用</span></td><td><span class="text-link" onclick="openEditUserModal(1)">编辑</span></td></tr>
-                <tr><td>李四</td><td><span class="badge badge-blue">销售</span></td><td>华南区</td><td>13800138002</td><td><span class="badge badge-green">启用</span></td><td><span class="text-link" onclick="openEditUserModal(2)">编辑</span></td></tr>
-                <tr><td>王五</td><td><span class="badge badge-blue">销售</span></td><td>华北区</td><td>13800138003</td><td><span class="badge badge-green">启用</span></td><td><span class="text-link" onclick="openEditUserModal(3)">编辑</span></td></tr>
-                <tr><td>赵六</td><td><span class="badge badge-purple">运营</span></td><td>华东区</td><td>13800138004</td><td><span class="badge badge-green">启用</span></td><td><span class="text-link" onclick="openEditUserModal(4)">编辑</span></td></tr>
-                <tr><td>孙七</td><td><span class="badge badge-purple">运营</span></td><td>华南区</td><td>13800138005</td><td><span class="badge badge-gray">停用</span></td><td><span class="text-link" onclick="openEditUserModal(5)">编辑</span></td></tr>
-                <tr><td>周八</td><td><span class="badge badge-red">管理员</span></td><td>总部</td><td>13800138006</td><td><span class="badge badge-green">启用</span></td><td><span class="text-link" onclick="openEditUserModal(6)">编辑</span></td></tr>
-              </tbody>
+              <tbody id="users-tbody"></tbody>
             </table>
           </div>
         </div>
@@ -848,12 +523,15 @@
     <!-- ========== Data Management ========== -->
     <div id="dataManagement-view" class="view">
       <div class="topbar">
+        <button class="mobile-hamburger" onclick="openMobileDrawer()" style="display:none;background:none;border:none;padding:8px;min-width:44px;min-height:44px;cursor:pointer;">
+          <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="3" y1="12" x2="21" y2="12"/><line x1="3" y1="6" x2="21" y2="6"/><line x1="3" y1="18" x2="21" y2="18"/></svg>
+        </button>
         <div class="topbar-title">数据管理</div>
       </div>
       <div class="content">
         <div class="filter-bar mb-24">
           <button class="btn btn-primary" onclick="openImportModal('school')">导入学校数据</button>
-          <button class="btn btn-primary" onclick="openImportModal('record')">导入跟进记录</button>
+          <button class="btn btn-primary" onclick="openImportModal('record')">导入工作记录</button>
         </div>
         <div class="card">
           <div class="table-wrapper">
@@ -878,34 +556,36 @@
     <!-- ========== Operation Logs ========== -->
     <div id="operationLogs-view" class="view">
       <div class="topbar">
+        <button class="mobile-hamburger" onclick="openMobileDrawer()" style="display:none;background:none;border:none;padding:8px;min-width:44px;min-height:44px;cursor:pointer;">
+          <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="3" y1="12" x2="21" y2="12"/><line x1="3" y1="6" x2="21" y2="6"/><line x1="3" y1="18" x2="21" y2="18"/></svg>
+        </button>
         <div class="topbar-title">操作日志</div>
       </div>
       <div class="content">
         <div class="filter-bar mb-24">
-          <input type="text" class="search-input" id="logsTableInput" placeholder="搜索操作人姓名..." onkeypress="if(event.key==='Enter')searchLogs()" style="width:240px;">
+          <input type="text" class="search-input" id="logsTableInput" placeholder="搜索操作人姓名..." onkeypress="if(event.key==='Enter')searchLogs()" style="width:200px;">
           <button class="btn btn-outline" onclick="searchLogs()">搜索</button>
-          <select class="search-input" id="logsTypeFilter" onchange="filterLogsByType()" style="width:180px;">
-            <option value="">全部操作类型</option>
-            <option value="写跟进记录">写跟进记录</option>
-            <option value="状态变更">状态变更</option>
-            <option value="录合同">录合同</option>
-            <option value="用户管理">用户管理</option>
-            <option value="运营记录">运营记录</option>
-          </select>
+          <select class="search-input" id="logsTypeFilter" onchange="searchLogs()" style="width:160px;">
+          <option value="">全部类型</option>
+          <option value="写工作记录">写工作记录</option>
+          <option value="录合同">录合同</option>
+          <option value="联系人">联系人</option>
+          <option value="设备投放">设备投放</option>
+          <option value="学校创建">学校创建</option>
+          <option value="状态变更">状态变更</option>
+        </select>
+          <input type="date" class="search-input" id="logsDateFrom" style="width:160px;" title="开始日期" onchange="searchLogs()">
+          <input type="date" class="search-input" id="logsDateTo" style="width:160px;" title="结束日期" onchange="searchLogs()">
+          <button class="btn btn-outline" onclick="resetLogsFilter()">重置</button>
         </div>
         <div class="card">
           <div class="table-wrapper">
             <table id="operation-logs-table">
               <thead>
-                <tr><th>时间</th><th>操作人</th><th>操作</th><th>目标</th><th>详情</th></tr>
+                <tr><th>时间</th><th>操作人</th><th>操作类型</th><th>目标</th><th>详情</th></tr>
               </thead>
               <tbody id="operationLogs-tbody">
-                <tr><td>2026-10-14 16:30</td><td>张三</td><td><span class="badge badge-blue">写跟进记录</span></td><td>阳光小学</td><td>面谈 - 与校长沟通采购计划</td></tr>
-                <tr><td>2026-10-14 14:00</td><td>张三</td><td><span class="badge badge-orange">状态变更</span></td><td>红星实验小学</td><td>意向 -> 方案报价</td></tr>
-                <tr><td>2026-10-14 10:00</td><td>张三</td><td><span class="badge badge-blue">写跟进记录</span></td><td>建设路中学</td><td>电话 - 确认合同金额</td></tr>
-                <tr><td>2026-10-13 15:00</td><td>赵六</td><td><span class="badge badge-purple">运营记录</span></td><td>育才中学</td><td>每周学情报告已发送</td></tr>
-                <tr><td>2026-10-13 11:00</td><td>张三</td><td><span class="badge badge-green">录合同</span></td><td>光明实验小学</td><td>合同编号 HT-2026-001</td></tr>
-                <tr><td>2026-10-12 09:00</td><td>周八</td><td><span class="badge badge-gray">用户管理</span></td><td>系统</td><td>新增用户 王五</td></tr>
+                <tr><td colspan="5" class="empty-state">加载中...</td></tr>
               </tbody>
             </table>
           </div>
@@ -916,6 +596,9 @@
     <!-- ========== 学校字典 ========== -->
     <div id="schoolDictionary-view" class="view">
       <div class="topbar">
+        <button class="mobile-hamburger" onclick="openMobileDrawer()" style="display:none;background:none;border:none;padding:8px;min-width:44px;min-height:44px;cursor:pointer;">
+          <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="3" y1="12" x2="21" y2="12"/><line x1="3" y1="6" x2="21" y2="6"/><line x1="3" y1="18" x2="21" y2="18"/></svg>
+        </button>
         <div class="topbar-title">学校字典</div>
         <div class="topbar-actions">
           <button class="btn btn-outline" onclick="openBatchImportModal()">
@@ -947,7 +630,401 @@
       </div>
     </div>
 
+    <!-- ========== 工作管理：汇报记录列表 ========== -->
+    <div id="workReportsList-view" class="view">
+      <div class="topbar">
+        <button class="mobile-hamburger" onclick="openMobileDrawer()" style="display:none;background:none;border:none;padding:8px;min-width:44px;min-height:44px;cursor:pointer;">
+          <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="3" y1="12" x2="21" y2="12"/><line x1="3" y1="6" x2="21" y2="6"/><line x1="3" y1="18" x2="21" y2="18"/></svg>
+        </button>
+        <div class="topbar-title wr-title-pc">工作管理</div>
+        <div class="topbar-title mobile-wr-title">工作汇报</div>
+        <div class="topbar-actions">
+          <button id="workReportFillBtn" class="btn btn-primary" onclick="openReportTypeModal()">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg>
+            填写汇报
+          </button>
+        </div>
+      </div>
+      <div class="content">
+        <!-- 移动端：汇报记录 / 目标设置 切换 -->
+        <div class="mobile-wr-tabs" id="mobileWrTabs">
+          <div class="mobile-wr-tab active" data-tab="reports" onclick="switchMobileWrTab('reports', this)">汇报记录</div>
+          <div class="mobile-wr-tab" data-tab="goals" onclick="switchMobileWrTab('goals', this)">目标设置</div>
+        </div>
+
+        <!-- 移动端：汇报记录 -->
+        <div class="mobile-wr-pane" id="mobileWrReportsPane">
+          <div id="mobileWeeklyCard"></div>
+          <div class="mobile-wr-section-title">历史汇报</div>
+          <div id="mobileReportHistoryList"></div>
+        </div>
+
+        <!-- 移动端：目标设置 -->
+        <div class="mobile-wr-pane" id="mobileWrGoalsPane" style="display:none">
+          <div id="mobileGoalCurrentCard"></div>
+          <div class="mobile-wr-section-title">历史目标</div>
+          <div id="mobileGoalHistoryList"></div>
+        </div>
+
+        <div class="tabs mb-16 wr-pc-tabs" id="workManagementTabBar">
+          <div class="tab-item active" onclick="switchWorkManagementTab(this, 'workMgmtTab-reports')">汇报记录</div>
+          <div class="tab-item" onclick="switchWorkManagementTab(this, 'workMgmtTab-goals')">目标设置</div>
+          <div class="tab-item" onclick="switchWorkManagementTab(this, 'workMgmtTab-stats')">汇报统计</div>
+        </div>
+
+        <!-- 4-0. 汇报记录标签页 -->
+        <div id="workMgmtTab-reports" class="work-mgmt-tab-content">
+          <div class="filter-bar mb-16">
+            <select class="select-input" id="wrTypeFilter" onchange="renderWorkReportsList()">
+              <option value="">全部类型</option>
+              <option value="周度汇报">周度汇报</option>
+              <option value="月度汇报">月度汇报</option>
+            </select>
+            <select class="select-input" id="wrStatusFilter" onchange="renderWorkReportsList()">
+              <option value="">全部状态</option>
+              <option value="草稿">草稿</option>
+              <option value="已提交">已提交</option>
+            </select>
+          </div>
+          <div class="card">
+            <div class="table-wrapper">
+              <table>
+                <thead>
+                  <tr>
+                    <th>汇报人</th>
+                    <th>汇报类型</th>
+                    <th>汇报周期</th>
+                    <th>拜访次数</th>
+                    <th>签约学校</th>
+                    <th>销售金额</th>
+                    <th>状态</th>
+                    <th>提交时间</th>
+                    <th>操作</th>
+                  </tr>
+                </thead>
+                <tbody id="workReports-tbody">
+                </tbody>
+              </table>
+            </div>
+          </div>
+        </div>
+
+        <!-- 4-1. 目标设置标签页 -->
+        <div id="workMgmtTab-goals" class="work-mgmt-tab-content" style="display:none">
+          <div class="card">
+            <div class="card-header">
+              <div class="card-title">月度目标列表</div>
+              <button id="monthlyGoalSetBtn" class="btn btn-sm btn-primary" onclick="openMonthlyGoalModal()">+ 设置目标</button>
+            </div>
+            <div class="card-body">
+              <div class="table-wrapper">
+                <table>
+                  <thead>
+                    <tr>
+                      <th>用户名</th>
+                      <th>月份</th>
+                      <th>拜访次数目标</th>
+                      <th>签约学校数目标</th>
+                      <th>销售金额目标</th>
+                      <th>状态</th>
+                      <th>操作</th>
+                    </tr>
+                  </thead>
+                  <tbody id="monthlyGoals-tbody">
+                  </tbody>
+                </table>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- 4-2. 汇报统计标签页（占位） -->
+        <div id="workMgmtTab-stats" class="work-mgmt-tab-content" style="display:none">
+          <div class="card">
+            <div class="card-body" style="text-align:center;padding:60px 20px;color:#94a3b8;">
+              <div style="font-size:16px;">汇报统计功能待开发</div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- ========== 工作管理：汇报表单（二级页面） ========== -->
+    <div id="workReportForm-view" class="view">
+      <div class="topbar">
+        <button class="mobile-back-btn" onclick="backFromWorkReportForm()" style="display:none;background:none;border:none;padding:8px;min-width:44px;min-height:44px;cursor:pointer;">
+          <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="15 18 9 12 15 6"/></svg>
+        </button>
+        <div class="topbar-title mobile-wr-form-title" id="wrFormMobileTitle">填写本周汇报</div>
+        <div class="topbar-breadcrumb">
+          <span class="text-link" onclick="showView('workReportsList', document.querySelector('[data-view=workReportsList]'))">工作管理</span>
+          / <span id="wrFormBreadcrumb">填写汇报</span>
+        </div>
+      </div>
+      <div class="content">
+        <!-- 4-1. 本周指标完成情况 -->
+        <div class="card mb-24">
+          <div class="card-header">
+            <div class="card-title">一、本周指标完成情况</div>
+            <span class="text-sm text-muted" id="wrPeriodInfo"></span>
+          </div>
+          <div class="card-body">
+            <div class="wr-indicator-grid">
+              <!-- 拜访次数 -->
+              <div class="wr-indicator-card">
+                <div class="wr-ind-title">本周拜访次数</div>
+                <div class="wr-ind-main-value"><input type="number" id="wrDoneFollow" class="wr-ind-main-input" value="0" min="0"> <span>次</span></div>
+                <div class="wr-ind-sub-info">
+                  <span>本月目标：<b id="wrTargetFollow">--</b></span>
+                  <span>·</span>
+                  <span>本月累计：<b id="wrCumulativeFollow">0</b> 次</span>
+                </div>
+                <div class="wr-ind-progress">
+                  <div class="wr-progress-bar"><div class="wr-progress-fill" id="wrProgressFollow" style="width:0%"></div></div>
+                  <span class="wr-progress-text" id="wrProgressFollowText">0%</span>
+                </div>
+              </div>
+              <!-- 签约学校数 -->
+              <div class="wr-indicator-card">
+                <div class="wr-ind-title">本周签约学校数</div>
+                <div class="wr-ind-main-value"><input type="number" id="wrDoneNewSchool" class="wr-ind-main-input" value="0" min="0"> <span>所</span></div>
+                <div class="wr-ind-sub-info">
+                  <span>本月目标：<b id="wrTargetNewSchool">--</b></span>
+                  <span>·</span>
+                  <span>本月累计：<b id="wrCumulativeNewSchool">0</b> 所</span>
+                </div>
+                <div class="wr-ind-progress">
+                  <div class="wr-progress-bar"><div class="wr-progress-fill" id="wrProgressNewSchool" style="width:0%"></div></div>
+                  <span class="wr-progress-text" id="wrProgressNewSchoolText">0%</span>
+                </div>
+              </div>
+              <!-- 销售金额 -->
+              <div class="wr-indicator-card">
+                <div class="wr-ind-title">本周销售金额</div>
+                <div class="wr-ind-main-value"><input type="number" id="wrDoneSigned" class="wr-ind-main-input" value="0" min="0" step="0.1"> <span>元</span></div>
+                <div class="wr-ind-sub-info">
+                  <span>本月目标：<b id="wrTargetSigned">--</b></span>
+                  <span>·</span>
+                  <span>本月累计：<b id="wrCumulativeSigned">0</b> 元</span>
+                </div>
+                <div class="wr-ind-progress">
+                  <div class="wr-progress-bar"><div class="wr-progress-fill" id="wrProgressSigned" style="width:0%"></div></div>
+                  <span class="wr-progress-text" id="wrProgressSignedText">0%</span>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- 4-2. 本周实际工作情况 -->
+        <div class="card mb-24">
+          <div class="card-header">
+            <div>
+              <div class="card-title">二、本周实际工作情况</div>
+              <div class="text-sm text-muted">自动拉取本周期内的跟进记录，您可以补充或删除</div>
+            </div>
+            <button class="btn btn-sm btn-primary" onclick="addWorkRecordRow()">+ 新增工作记录</button>
+          </div>
+          <div class="card-body">
+            <div id="wrWorkRecordsList"></div>
+            <button class="mw-add-btn" onclick="addWorkRecordRow()">+ 添加工作情况</button>
+          </div>
+        </div>
+
+        <!-- 4-3. 下周工作计划 -->
+        <div class="card mb-24">
+          <div class="card-header">
+            <div class="card-title">三、下周工作计划</div>
+            <button class="btn btn-sm btn-primary" onclick="addNextWeekPlanRow()">+ 新增计划</button>
+          </div>
+          <div class="card-body">
+            <div id="wrNextWeekPlansList"></div>
+            <button class="mw-add-btn" onclick="addNextWeekPlanRow()">+ 添加计划</button>
+          </div>
+        </div>
+
+        <!-- 4-4. 补充说明 -->
+        <div class="card mb-24">
+          <div class="card-header">
+            <div class="card-title">补充说明（自定义内容）</div>
+          </div>
+          <div class="card-body">
+            <textarea id="wrNotes" class="form-input" rows="4" placeholder="有其他要补充的内容，可以在这里填写（选填）" onchange="workReportState.notes = this.value"></textarea>
+          </div>
+        </div>
+
+      </div>
+
+      <!-- 底部固定操作栏 -->
+      <div class="wr-footer-bar">
+        <button class="btn btn-primary" id="wrReturnBtn" style="display:none" onclick="showView('workReportsList', document.querySelector('[data-view=workReportsList]'))">返回</button>
+        <button class="btn btn-outline" onclick="saveWorkReportDraft()">保存草稿</button>
+        <button class="btn btn-primary" onclick="submitWorkReportConfirm()">提交汇报</button>
+      </div>
+    </div>
+
+  <!-- ==================== 我的页面 ==================== -->
+  <div id="my-view" class="view">
+    <div class="topbar">
+      <div class="topbar-title">我的</div>
+    </div>
+    <div class="content">
+      <!-- 个人信息卡 -->
+      <div class="mobile-profile-card">
+        <div class="profile-avatar" id="profileAvatar">张</div>
+        <div class="profile-info">
+          <div class="profile-name" id="profileName">张三</div>
+          <div class="profile-meta">
+            <span class="profile-role" id="profileRole">超级管理员</span>
+            <span class="profile-dept" id="profileDept">华东区</span>
+          </div>
+        </div>
+      </div>
+
+      <!-- 菜单分组 -->
+      <div class="mobile-menu-group">
+        <div class="mobile-menu-item" onclick="showView('dashboard')">
+          <span class="menu-icon">🎯</span>
+          <span class="menu-label">目标管理</span>
+          <svg class="menu-arrow" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="9 18 15 12 9 6"/></svg>
+        </div>
+        <div class="mobile-menu-item" onclick="showView('records')">
+          <span class="menu-icon">📋</span>
+          <span class="menu-label">工作管理</span>
+          <svg class="menu-arrow" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="9 18 15 12 9 6"/></svg>
+        </div>
+        <div class="mobile-menu-item" onclick="showView('schoolList')">
+          <span class="menu-icon">📄</span>
+          <span class="menu-label">合同管理</span>
+          <svg class="menu-arrow" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="9 18 15 12 9 6"/></svg>
+        </div>
+      </div>
+
+      <div class="mobile-menu-group">
+        <div class="mobile-menu-item" onclick="changePassword()">
+          <span class="menu-icon">🔑</span>
+          <span class="menu-label">修改密码</span>
+          <svg class="menu-arrow" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="9 18 15 12 9 6"/></svg>
+        </div>
+        <div class="mobile-menu-item" onclick="handleLogout()">
+          <span class="menu-icon">🚪</span>
+          <span class="menu-label">退出登录</span>
+          <svg class="menu-arrow" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="9 18 15 12 9 6"/></svg>
+        </div>
+      </div>
+    </div>
+  </div>
+
   </main>
+
+  <!-- ==================== 移动端底部Tab导航 ==================== -->
+  <nav class="mobile-tabbar" id="mobileTabbar">
+    <div id="tab-workspace" class="mobile-tabbar-item active" data-view="dashboard" onclick="showView('dashboard')">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 9l9-7 9 7v11a2 2 0 01-2 2H5a2 2 0 01-2-2z"/><polyline points="9 22 9 12 15 12 15 22"/></svg>
+      <span>工作台</span>
+    </div>
+    <div id="tab-schools" class="mobile-tabbar-item" data-view="schoolList" onclick="showView('schoolList')">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 10v6M2 10l10-5 10 5-10 5z"/><path d="M6 12v5c0 2 4 3 6 3s6-1 6-3v-5"/></svg>
+      <span>学校</span>
+    </div>
+    <div id="tab-records" class="mobile-tabbar-item" data-view="records" onclick="showView('records')">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M14 2H6a2 2 0 00-2 2v16a2 2 0 002 2h12a2 2 0 002-2V8z"/><polyline points="14 2 14 8 20 8"/></svg>
+      <span>工作记录</span>
+    </div>
+    <div id="tab-reports" class="mobile-tabbar-item" data-view="workReportsList" onclick="showView('workReportsList')">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="18" y1="20" x2="18" y2="10"/><line x1="12" y1="20" x2="12" y2="4"/><line x1="6" y1="20" x2="6" y2="14"/></svg>
+      <span>工作汇报</span>
+    </div>
+  </nav>
+
+  <!-- ==================== 移动端顶部用户头像下拉菜单 ==================== -->
+  <div class="mobile-user-dropdown" id="mobileUserDropdown">
+    <div class="mobile-user-dropdown-overlay" onclick="closeMobileUserDropdown()"></div>
+    <div class="mobile-user-dropdown-card">
+      <div class="mobile-user-dropdown-header">
+        <div class="mobile-user-dropdown-avatar" id="mobileDropdownAvatar">张</div>
+        <div class="mobile-user-dropdown-name" id="mobileDropdownName">张三</div>
+        <div class="mobile-user-dropdown-meta" id="mobileDropdownMeta">员工 · 华东区</div>
+      </div>
+      <div class="mobile-user-dropdown-divider"></div>
+      <div class="mobile-user-dropdown-rows">
+        <div class="mobile-user-dropdown-row">
+          <span class="mobile-user-dropdown-label">角色</span>
+          <span class="mobile-user-dropdown-value" id="mobileDropdownRole">员工</span>
+        </div>
+        <div class="mobile-user-dropdown-row">
+          <span class="mobile-user-dropdown-label">部门</span>
+          <span class="mobile-user-dropdown-value" id="mobileDropdownDept">华东区</span>
+        </div>
+      </div>
+      <div class="mobile-user-dropdown-divider"></div>
+      <div class="mobile-user-dropdown-footer">
+        <button class="mobile-user-dropdown-logout" onclick="handleLogout()">退出登录</button>
+      </div>
+    </div>
+  </div>
+
+  <!-- ==================== 移动端抽屉侧边栏 ==================== -->
+  <div class="mobile-drawer-overlay" id="mobileDrawerOverlay" onclick="closeMobileDrawer()"></div>
+  <div class="mobile-drawer" id="mobileDrawer">
+    <div class="mobile-drawer-header">
+      <div class="logo-text">学情同步笔 BMS</div>
+      <div class="mobile-drawer-close" onclick="closeMobileDrawer()">
+        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg>
+      </div>
+    </div>
+    <nav class="mobile-drawer-nav">
+      <div class="mobile-drawer-group-title">工作台</div>
+      <div class="mobile-drawer-item active" data-view="dashboard" onclick="showView('dashboard'); closeMobileDrawer();">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 9l9-7 9 7v11a2 2 0 01-2 2H5a2 2 0 01-2-2z"/><polyline points="9 22 9 12 15 12 15 22"/></svg>
+        <span>工作台</span>
+      </div>
+      <div class="mobile-drawer-group-title">业务管理</div>
+      <div class="mobile-drawer-item" data-view="schoolList" onclick="showView('schoolList'); closeMobileDrawer();">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 10v6M2 10l10-5 10 5-10 5z"/><path d="M6 12v5c0 2 4 3 6 3s6-1 6-3v-5"/></svg>
+        <span>学校管理</span>
+      </div>
+      <div class="mobile-drawer-item" data-view="records" onclick="showView('records'); closeMobileDrawer();">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M14 2H6a2 2 0 00-2 2v16a2 2 0 002 2h12a2 2 0 002-2V8z"/><polyline points="14 2 14 8 20 8"/></svg>
+        <span>记录管理</span>
+      </div>
+      <div class="mobile-drawer-group-title">系统管理</div>
+      <div class="mobile-drawer-item" data-view="users" onclick="showView('users'); closeMobileDrawer();">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M17 21v-2a4 4 0 00-4-4H5a4 4 0 00-4 4v2"/><circle cx="9" cy="7" r="4"/></svg>
+        <span>账户管理</span>
+      </div>
+      <div class="mobile-drawer-item" data-view="dataManagement" onclick="showView('dataManagement'); closeMobileDrawer();">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><ellipse cx="12" cy="5" rx="9" ry="3"/></svg>
+        <span>数据管理</span>
+      </div>
+      <div class="mobile-drawer-item" data-view="operationLogs" onclick="showView('operationLogs'); closeMobileDrawer();">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="22 12 18 12 15 21 9 3 6 12 2 12"/></svg>
+        <span>操作日志</span>
+      </div>
+    </nav>
+    <div class="mobile-drawer-footer">
+      <div class="avatar" id="mobileUserAvatar"></div>
+      <div>
+        <div class="user-name" id="mobileUserName"></div>
+        <div class="user-role" id="mobileUserRole"></div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ==================== 移动端FAB按钮 ==================== -->
+  <div class="fab-menu" id="fabMenu">
+    <div class="fab-menu-item" onclick="openWorkRecordModal(); closeFabMenu();">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M11 4H4a2 2 0 00-2 2v14a2 2 0 002 2h14a2 2 0 002-2v-7"/><path d="M18.5 2.5a2.121 2.121 0 013 3L12 15l-4 1 1-4 9.5-9.5z"/></svg>
+      <span>写工作记录</span>
+    </div>
+    <div class="fab-menu-item" onclick="openModal('newSchoolModal'); closeFabMenu();">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg>
+      <span>新建学校</span>
+    </div>
+  </div>
+  <button class="fab-button" id="fabButton" onclick="toggleFabMenu()">
+    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg>
+  </button>
 
   <!-- ==================== Modals ==================== -->
 
@@ -955,7 +1032,7 @@
   <div id="followUpModal" class="modal-mask" onclick="if(event.target===this)closeModal('followUpModal')">
     <div class="modal">
       <div class="modal-header">
-        <div class="modal-title">写跟进</div>
+        <div class="modal-title" id="followUpModalTitle">写工作记录</div>
         <div class="modal-close" onclick="closeModal('followUpModal')">
           <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg>
         </div>
@@ -963,38 +1040,77 @@
       <div class="modal-body">
         <div class="form-group">
           <label class="form-label"><span class="required">*</span>学校</label>
-          <select class="form-select">
-            <option value="">请选择学校</option>
-            <option>阳光小学</option>
-            <option>光明实验小学</option>
-            <option>希望小学</option>
-            <option>育才中学</option>
-            <option>蓝天幼儿园</option>
-            <option>建设路中学</option>
-            <option>红星实验小学</option>
-          </select>
+          <div class="school-search-container" id="followUpSchoolContainer">
+            <input type="text" class="form-input school-search-trigger" readonly placeholder="请选择学校" onclick="openSchoolDropdown('followUp')" autocomplete="off">
+            <input type="hidden" id="followUpSchoolValue">
+            <div class="school-search-dropdown" id="followUpSchoolDropdown" style="display:none;">
+              <div class="school-search-filter-wrap">
+                <input type="text" class="school-search-filter" placeholder="输入关键词搜索..." oninput="filterSchoolDropdown('followUp', this.value)" autocomplete="off">
+              </div>
+              <div class="school-search-list"></div>
+            </div>
+          </div>
         </div>
         <div class="form-group">
-          <label class="form-label"><span class="required">*</span>跟进方式</label>
-          <select class="form-select">
-            <option value="">请选择</option>
-            <option>电话</option>
-            <option>上门拜访</option>
-            <option>微信</option>
-          </select>
+          <label class="form-label"><span class="required">*</span>内容</label>
+          <textarea class="form-textarea" id="workRecordContent" placeholder="请输入工作记录内容"></textarea>
         </div>
         <div class="form-group">
-          <label class="form-label"><span class="required">*</span>跟进内容</label>
-          <textarea class="form-textarea" placeholder="请输入跟进内容和跟进结果"></textarea>
+          <label class="form-label">本次跟进后学校状态</label>
+          <select class="form-select" id="followUpStatusAfter">
+            <option value="">保持当前状态</option>
+          </select>
+          <div class="text-muted" style="font-size:12px;margin-top:4px;">不改则学校状态不变</div>
         </div>
         <div class="form-group">
           <label class="form-label">下一步计划</label>
-          <input type="text" class="form-input" placeholder="请输入下一步计划（选填）">
+          <input type="text" id="followUpNextStep" class="form-input" placeholder="请输入下一步计划（选填）">
         </div>
       </div>
       <div class="modal-footer">
-        <button class="btn btn-outline" onclick="closeModal('followUpModal')">取消</button>
-        <button class="btn btn-primary" onclick="submitFollowUp()">提交</button>
+        <button class="btn btn-outline" onclick="closeModal('followUpModal')">关闭</button>
+        <button class="btn btn-primary" onclick="submitFollowUp()" id="followUpSubmitBtn">提交</button>
+      </div>
+    </div>
+  </div>
+
+  <!-- 工作记录详情（只读查看） -->
+  <div id="viewRecordModal" class="modal-mask" onclick="if(event.target===this)closeModal('viewRecordModal')">
+    <div class="modal">
+      <div class="modal-header">
+        <div class="modal-title">工作记录详情</div>
+        <div class="modal-close" onclick="closeModal('viewRecordModal')">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg>
+        </div>
+      </div>
+      <div class="modal-body">
+        <div class="view-field">
+          <label class="view-field-label">学校</label>
+          <div class="view-field-value" id="viewRecordSchool"></div>
+        </div>
+        <div class="view-field">
+          <label class="view-field-label">内容</label>
+          <div class="view-field-value" id="viewRecordContent"></div>
+        </div>
+        <div class="view-field">
+          <label class="view-field-label">状态</label>
+          <div class="view-field-value" id="viewRecordStatus"></div>
+        </div>
+        <div class="view-field">
+          <label class="view-field-label">下一步计划</label>
+          <div class="view-field-value" id="viewRecordNextStep"></div>
+        </div>
+        <div class="view-field">
+          <label class="view-field-label">提交人</label>
+          <div class="view-field-value" id="viewRecordUser"></div>
+        </div>
+        <div class="view-field">
+          <label class="view-field-label">提交时间</label>
+          <div class="view-field-value" id="viewRecordTime"></div>
+        </div>
+      </div>
+      <div class="modal-footer">
+        <button class="btn btn-outline" onclick="closeModal('viewRecordModal')">关闭</button>
       </div>
     </div>
   </div>
@@ -1009,26 +1125,101 @@
         </div>
       </div>
       <div class="modal-body">
+        <!-- 学校名称搜索 -->
         <div class="form-group">
           <label class="form-label"><span class="required">*</span>学校名称</label>
-          <input type="text" id="newSchoolName" class="form-input" placeholder="请输入学校名称，系统将自动匹配信息" oninput="autoMatchSchool(this.value)">
-          <div id="schoolMatchHint" style="font-size:13px;color:#64748b;margin-top:8px;display:none;">
-            <span id="matchHintText"></span>
+          <div class="school-search-container">
+            <input type="text" id="newSchoolName" class="form-input" placeholder="输入学校名称搜索，或手动输入新学校" oninput="autoMatchSchool(this.value)" onfocus="autoMatchSchool(this.value)" autocomplete="off">
+            <div id="schoolSearchDropdown" class="school-search-dropdown" style="display:none;"></div>
+          </div>
+          <div id="schoolNoMatchHint" class="form-hint" style="display:none;color:#f59e0b;">未找到匹配学校，已自动启用手动填写模式</div>
+        </div>
+
+        <!-- 选中的学校提示 -->
+        <div id="selectedSchoolHint" style="display:none;margin-bottom:16px;padding:10px 12px;background:#f0fdf4;border:1px solid #bbf7d0;border-radius:6px;font-size:13px;color:#166534;">
+          ✓ 已选择：<strong id="selectedSchoolName"></strong>
+          <a href="javascript:void(0)" onclick="clearSchoolSelection()" style="margin-left:12px;color:#ef4444;text-decoration:underline;">清除选择</a>
+        </div>
+
+        <!-- 区域/学段/类型 - 默认隐藏，匹配到或无匹配时才显示 -->
+        <div id="schoolExtraFields" style="display:none;">
+          <div class="form-row">
+            <div class="form-group">
+              <label class="form-label"><span class="required">*</span>区域</label>
+              <!-- 从字典匹配时显示文本框 -->
+              <input type="text" id="newSchoolRegionText" class="form-input" style="display:none;" placeholder="省份-城市" readonly>
+              <!-- 手动输入时显示下拉选择 -->
+              <div id="newSchoolRegionSelects" style="display: flex; gap: 12px;">
+                <select id="newSchoolProvince" class="form-select" onchange="triggerNewSchoolCitySelect(this.value)" style="flex: 1;" disabled>
+                  <option value="">请选择省份</option>
+                </select>
+                <select id="newSchoolCity" class="form-select" style="flex: 1;" disabled>
+                  <option value="">请选择城市</option>
+                </select>
+              </div>
+            </div>
+            <div class="form-group">
+              <label class="form-label"><span class="required">*</span>学段</label>
+              <select id="newSchoolLevel" class="form-select" disabled>
+                <option value="">请选择学段</option>
+                <option value="幼儿园">幼儿园</option>
+                <option value="小学">小学</option>
+                <option value="初中">初中</option>
+                <option value="高中">高中</option>
+                <option value="九年一贯">九年一贯</option>
+                <option value="完全中学">完全中学</option>
+              </select>
+            </div>
+          </div>
+          <div class="form-group">
+            <label class="form-label"><span class="required">*</span>学校类型</label>
+            <select id="newSchoolType" class="form-select" disabled>
+              <option value="">请选择学校类型</option>
+              <option value="公办">公办</option>
+              <option value="民办">民办</option>
+              <option value="其他">其他</option>
+            </select>
           </div>
         </div>
-        <div id="autoFilledFields" style="display:none;margin-top:16px;padding:16px;background:#f8fafc;border-radius:8px;">
-          <div style="font-size:13px;font-weight:500;color:#64748b;margin-bottom:12px;">自动匹配信息</div>
-          <div class="info-grid">
-            <div class="info-item"><span class="info-label">所属部门</span><span class="info-value" id="autoDept">华东区</span></div>
-            <div class="info-item"><span class="info-label">区域</span><span class="info-value" id="autoRegion">广州·越秀区</span></div>
-            <div class="info-item"><span class="info-label">学段</span><span class="info-value" id="autoLevel">小学</span></div>
-            <div class="info-item"><span class="info-label">学校类型</span><span class="info-value" id="autoType">公办</span></div>
-          </div>
-        </div>
+
       </div>
       <div class="modal-footer">
         <button class="btn btn-outline" onclick="closeModal('newSchoolModal')">取消</button>
         <button class="btn btn-primary" onclick="submitNewSchool()">创建</button>
+      </div>
+    </div>
+  </div>
+
+  <!-- Monthly Goal Modal -->
+  <div id="monthlyGoalModal" class="modal-mask" onclick="if(event.target===this)closeModal('monthlyGoalModal')">
+    <div class="modal">
+      <div class="modal-header">
+        <div class="modal-title" id="monthlyGoalModalTitle">设置月度目标</div>
+        <div class="modal-close" onclick="closeModal('monthlyGoalModal')">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg>
+        </div>
+      </div>
+      <div class="modal-body">
+        <div class="form-group">
+          <label class="form-label"><span class="required">*</span>月份</label>
+          <input type="month" id="monthlyGoalMonth" class="form-input" required>
+        </div>
+        <div class="form-group">
+          <label class="form-label"><span class="required">*</span>拜访次数目标</label>
+          <input type="number" id="monthlyGoalVisit" class="form-input" placeholder="例如：20" min="0" required>
+        </div>
+        <div class="form-group">
+          <label class="form-label"><span class="required">*</span>签约学校数目标</label>
+          <input type="number" id="monthlyGoalNewSchool" class="form-input" placeholder="例如：5" min="0" required>
+        </div>
+        <div class="form-group">
+          <label class="form-label"><span class="required">*</span>销售金额目标（元）</label>
+          <input type="number" id="monthlyGoalSignedAmount" class="form-input" placeholder="例如：100000" min="0" step="0.01" required>
+        </div>
+      </div>
+      <div class="modal-footer">
+        <button class="btn btn-outline" onclick="closeModal('monthlyGoalModal')">取消</button>
+        <button class="btn btn-primary" onclick="submitMonthlyGoal()">保存</button>
       </div>
     </div>
   </div>
@@ -1078,11 +1269,103 @@
     </div>
   </div>
 
+  <!-- 填写汇报类型选择弹窗 -->
+  <div id="reportTypeModal" class="modal-mask" onclick="if(event.target===this)closeModal('reportTypeModal')">
+    <div class="modal" style="max-width: 400px;">
+      <div class="modal-header">
+        <div class="modal-title">选择汇报类型</div>
+        <div class="modal-close" onclick="closeModal('reportTypeModal')">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg>
+        </div>
+      </div>
+      <div class="modal-body" style="padding: 24px;">
+        <div class="wr-type-options">
+          <div class="wr-type-card" onclick="selectReportType('周度汇报')">
+            <div class="wr-type-icon">📅</div>
+            <div class="wr-type-name">周度汇报</div>
+            <div class="wr-type-desc">总结本周工作，计划下周目标</div>
+          </div>
+          <div class="wr-type-card" onclick="selectReportType('月度汇报')">
+            <div class="wr-type-icon">📊</div>
+            <div class="wr-type-name">月度汇报</div>
+            <div class="wr-type-desc">总结本月业绩，规划下月重点</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- 提交汇报确认弹窗 -->
+  <div id="submitReportConfirmModal" class="modal-mask" onclick="if(event.target===this)closeModal('submitReportConfirmModal')">
+    <div class="modal" style="max-width: 400px;">
+      <div class="modal-header">
+        <div class="modal-title">确认提交</div>
+        <div class="modal-close" onclick="closeModal('submitReportConfirmModal')">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg>
+        </div>
+      </div>
+      <div class="modal-body" style="text-align: center; padding: 24px;">
+        <div class="confirm-modal-icon" style="font-size: 48px; margin-bottom: 16px;">⚠️</div>
+        <div style="font-size: 16px; color: #333;">提交后汇报状态将变为"已提交"</div>
+        <div class="text-sm text-muted mt-8" id="submitReportConfirmTip">提交后无法修改，请确认内容完整</div>
+      </div>
+      <div class="modal-footer" style="justify-content: center; gap: 12px;">
+        <button class="btn btn-outline" onclick="closeModal('submitReportConfirmModal')">取消</button>
+        <button class="btn btn-primary" onclick="doSubmitWorkReport()">确认提交</button>
+      </div>
+    </div>
+  </div>
+
+  <!-- Pause Reason Modal -->
+  <div id="pauseReasonModal" class="modal-mask" onclick="if(event.target===this)closeModal('pauseReasonModal')">
+    <div class="modal" style="max-width: 480px;">
+      <div class="modal-header">
+        <div class="modal-title">暂停推进</div>
+        <div class="modal-close" onclick="closeModal('pauseReasonModal')">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg>
+        </div>
+      </div>
+      <div class="modal-body">
+        <div class="form-group">
+          <label class="form-label"><span class="required">*</span>暂停原因</label>
+          <textarea id="pauseReasonInput" class="form-input" rows="4" placeholder="请填写暂停原因（必填）"></textarea>
+        </div>
+      </div>
+      <div class="modal-footer">
+        <button class="btn btn-outline" onclick="closeModal('pauseReasonModal')">取消</button>
+        <button class="btn btn-warning" onclick="submitPauseReason()">确认暂停</button>
+      </div>
+    </div>
+  </div>
+
+  <!-- Terminate Reason Modal -->
+  <div id="terminateReasonModal" class="modal-mask" onclick="if(event.target===this)closeModal('terminateReasonModal')">
+    <div class="modal" style="max-width: 480px;">
+      <div class="modal-header">
+        <div class="modal-title">终止推进</div>
+        <div class="modal-close" onclick="closeModal('terminateReasonModal')">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg>
+        </div>
+      </div>
+      <div class="modal-body">
+        <div class="alert alert-warning" style="margin-bottom: 16px;">⚠️ 终止后将无法恢复，请确认后再操作。</div>
+        <div class="form-group">
+          <label class="form-label"><span class="required">*</span>终止原因</label>
+          <textarea id="terminateReasonInput" class="form-input" rows="4" placeholder="请填写终止原因（必填）"></textarea>
+        </div>
+      </div>
+      <div class="modal-footer">
+        <button class="btn btn-outline" onclick="closeModal('terminateReasonModal')">取消</button>
+        <button class="btn btn-danger" onclick="submitTerminateReason()">确认终止</button>
+      </div>
+    </div>
+  </div>
+
   <!-- Add Contact Modal -->
   <div id="addContactModal" class="modal-mask" onclick="if(event.target===this)closeModal('addContactModal')">
     <div class="modal">
       <div class="modal-header">
-        <div class="modal-title">添加联系人</div>
+        <div class="modal-title">添加学校联系人</div>
         <div class="modal-close" onclick="closeModal('addContactModal')">
           <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg>
         </div>
@@ -1095,13 +1378,23 @@
           </div>
           <div class="form-group">
             <label class="form-label"><span class="required">*</span>职务</label>
-            <input type="text" class="form-input" placeholder="请输入职务">
+            <div class="position-tags">
+              <span class="position-tag" onclick="selectPosition('校长')">校长</span>
+              <span class="position-tag" onclick="selectPosition('副校长')">副校长</span>
+              <span class="position-tag" onclick="selectPosition('教导主任')">教导主任</span>
+              <span class="position-tag" onclick="selectPosition('年级主任')">年级主任</span>
+              <span class="position-tag" onclick="selectPosition('财务')">财务</span>
+              <span class="position-tag" onclick="selectPosition('信息中心主任')">信息中心主任</span>
+              <span class="position-tag" onclick="selectPosition('其他')">其他</span>
+            </div>
+            <input type="text" class="form-input" id="contactPosition" placeholder="或手动输入职务">
           </div>
         </div>
         <div class="form-row">
           <div class="form-group">
             <label class="form-label">电话</label>
-            <input type="text" class="form-input" placeholder="请输入电话">
+            <input type="text" class="form-input" id="contactPhone" placeholder="手机号或座机号" oninput="sanitizePhone(this)">
+            <div class="form-error" id="phoneError" style="display:none;">请输入正确的电话号码</div>
           </div>
           <div class="form-group">
             <label class="form-label"><span class="required">*</span>角色</label>
@@ -1116,7 +1409,7 @@
       </div>
       <div class="modal-footer">
         <button class="btn btn-outline" onclick="closeModal('addContactModal')">取消</button>
-        <button class="btn btn-primary" onclick="submitAddContact()">添加</button>
+        <button class="btn btn-primary" onclick="submitContact()">添加</button>
       </div>
     </div>
   </div>
@@ -1150,8 +1443,7 @@
             <label class="form-label">角色</label>
             <select class="form-select">
               <option value="">请选择角色</option>
-              <option value="销售">销售</option>
-              <option value="运营">运营</option>
+              <option value="员工">员工</option>
               <option value="一级部门负责人">一级部门负责人</option>
               <option value="超级管理员">超级管理员</option>
             </select>
@@ -1165,9 +1457,19 @@
           <div class="form-group">
             <label class="form-label">状态</label>
             <select class="form-select">
-              <option>活跃</option>
+              <option>启用</option>
               <option>停用</option>
             </select>
+          </div>
+        </div>
+        <div class="form-row">
+          <div class="form-group" style="display:flex;align-items:center;gap:12px;">
+            <label class="form-label" style="margin-bottom:0;">允许账号密码登录</label>
+            <label style="position:relative;display:inline-block;width:44px;height:24px;cursor:pointer;">
+              <input type="checkbox" id="addUserAllowPwd" style="opacity:0;width:0;height:0;">
+              <span style="position:absolute;inset:0;background:#d1d5db;border-radius:24px;transition:.2s;" id="addUserAllowPwdSlider"></span>
+            </label>
+            <span class="text-muted" style="font-size:12px;">关闭（默认仅飞书登录）</span>
           </div>
         </div>
       </div>
@@ -1205,7 +1507,12 @@
           </div>
           <div class="form-group">
             <label class="form-label">角色</label>
-            <input type="text" class="form-input" placeholder="请输入角色">
+            <select class="form-select">
+              <option value="">请选择角色</option>
+              <option value="员工">员工</option>
+              <option value="一级部门负责人">一级部门负责人</option>
+              <option value="超级管理员">超级管理员</option>
+            </select>
           </div>
         </div>
         <div class="form-row">
@@ -1216,9 +1523,19 @@
           <div class="form-group">
             <label class="form-label">状态</label>
             <select class="form-select">
-              <option>活跃</option>
+              <option>启用</option>
               <option>停用</option>
             </select>
+          </div>
+        </div>
+        <div class="form-row">
+          <div class="form-group" style="display:flex;align-items:center;gap:12px;">
+            <label class="form-label" style="margin-bottom:0;">允许账号密码登录</label>
+            <label style="position:relative;display:inline-block;width:44px;height:24px;cursor:pointer;">
+              <input type="checkbox" id="editUserAllowPwd" style="opacity:0;width:0;height:0;">
+              <span style="position:absolute;inset:0;background:#d1d5db;border-radius:24px;transition:.2s;" id="editUserAllowPwdSlider"></span>
+            </label>
+            <span class="text-muted" style="font-size:12px;">关闭（默认仅飞书登录）</span>
           </div>
         </div>
       </div>
@@ -1262,7 +1579,11 @@
         </div>
       </div>
       <div class="modal-body">
-        <div id="importModalHint" style="color: #666; margin-bottom: 20px; font-size: 14px;"></div>
+        <div id="importModalHint" style="color: #666; margin-bottom: 12px; font-size: 14px;"></div>
+        <button id="downloadTemplateBtn" class="btn btn-ghost btn-sm" style="margin-bottom: 20px; display: inline-flex; align-items: center; gap: 6px;">
+          <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/></svg>
+          下载Excel模板
+        </button>
         <div id="importDropArea" style="border: 2px dashed #d0d7de; border-radius: 8px; padding: 48px 24px; text-align: center; cursor: pointer; transition: border-color 0.2s, background 0.2s;" onclick="document.getElementById('importFileInput').click()" ondragover="event.preventDefault();this.style.borderColor='#1677ff';this.style.background='#f0f5ff'" ondragleave="this.style.borderColor='#d0d7de';this.style.background=''" ondrop="event.preventDefault();this.style.borderColor='#d0d7de';this.style.background='';handleImportFileDrop(event)">
           <svg width="48" height="48" viewBox="0 0 24 24" fill="none" stroke="#999" stroke-width="1.5" style="margin-bottom: 12px;"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="17 8 12 3 7 8"/><line x1="12" y1="3" x2="12" y2="15"/></svg>
           <div style="color: #333; font-size: 15px; margin-bottom: 8px;">点击或拖拽文件到此区域</div>
@@ -1304,7 +1625,14 @@
           </div>
           <div class="form-group">
             <label class="form-label"><span class="required">*</span>区域</label>
-            <input type="text" class="form-input" id="schoolFormRegion" placeholder="如：广州·越秀区">
+            <div style="display: flex; gap: 12px;">
+              <select class="form-select" id="schoolFormProvince" onchange="triggerCitySelect(this.value)" style="flex: 1;">
+                <option value="">请选择省份</option>
+              </select>
+              <select class="form-select" id="schoolFormCity" disabled style="flex: 1;">
+                <option value="">请选择城市</option>
+              </select>
+            </div>
           </div>
           <div class="form-group">
             <label class="form-label"><span class="required">*</span>学段</label>
@@ -1316,6 +1644,7 @@
               <option value="高中">高中</option>
               <option value="九年一贯">九年一贯</option>
               <option value="完全中学">完全中学</option>
+              <option value="十二年一贯">十二年一贯</option>
             </select>
           </div>
           <div class="form-group">
@@ -1413,8 +1742,8 @@
             <input type="number" class="form-input" value="3" placeholder="目标学校数">
           </div>
           <div class="form-group">
-            <label class="form-label">销售目标（万元）</label>
-            <input type="number" step="0.01" class="form-input" value="10" placeholder="目标金额">
+            <label class="form-label">销售目标（元）</label>
+            <input type="number" step="1" class="form-input" value="10000" placeholder="目标金额">
           </div>
           <div class="form-group">
             <label class="form-label">自定义指标名称</label>
@@ -1433,90 +1762,201 @@
     </div>
   </div>
 
-  <!-- Handover Modal -->
-  <div id="handoverModal" class="modal-mask" onclick="if(event.target===this)closeModal('handoverModal')">
+  <!-- Device Deployment Modal -->
+  <div id="deviceDeploymentModal" class="modal-mask" onclick="if(event.target===this)closeModal('deviceDeploymentModal')">
     <div class="modal" style="max-width:480px;">
       <div class="modal-header">
-        <div class="modal-title">交接给运营</div>
-        <div class="modal-close" onclick="closeModal('handoverModal')">
+        <div class="modal-title">录入投放</div>
+        <div class="modal-close" onclick="closeModal('deviceDeploymentModal')">
           <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg>
         </div>
       </div>
       <div class="modal-body">
         <div class="form-group">
-          <label class="form-label"><span class="required">*</span>交接给</label>
-          <select id="handoverOperator" class="form-input">
-            <option value="">请选择运营</option>
-            <option value="赵六">赵六</option>
-            <option value="孙七">孙七</option>
-            <option value="周八">周八</option>
-          </select>
+          <label class="form-label"><span class="required">*</span>投放日期</label>
+          <input type="date" id="deployDate" class="form-input">
         </div>
         <div class="form-group">
-          <label class="form-label"><span class="required">*</span>交接备注</label>
-          <textarea id="handoverNote" class="form-textarea" placeholder="请简要说明交接原因和注意事项..." rows="4"></textarea>
+          <label class="form-label"><span class="required">*</span>投放数量</label>
+          <input type="number" id="deployQuantity" class="form-input" placeholder="请输入数量" min="1">
         </div>
       </div>
       <div class="modal-footer">
-        <button class="btn btn-outline" onclick="closeModal('handoverModal')">取消</button>
-        <button class="btn btn-primary" onclick="submitHandover()">提交交接</button>
+        <button class="btn btn-outline" onclick="closeModal('deviceDeploymentModal')">取消</button>
+        <button class="btn btn-primary" onclick="saveDeviceDeployment()">保存</button>
       </div>
     </div>
   </div>
 
-  <!-- Operation Log Modal -->
-  <div id="operationLogModal" class="modal-mask" onclick="if(event.target===this)closeModal('operationLogModal')">
-    <div class="modal" style="max-width:480px;">
+  <!-- 飞书部门选择弹窗 -->
+  <div id="feishuDeptModal" class="modal-mask" onclick="if(event.target===this)closeModal('feishuDeptModal')">
+    <div class="modal" style="max-width:640px;">
       <div class="modal-header">
-        <div class="modal-title">写运营记录</div>
-        <div class="modal-close" onclick="closeModal('operationLogModal')">
+        <div class="modal-title">飞书部门同步</div>
+        <div class="modal-close" onclick="closeModal('feishuDeptModal')">
           <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg>
         </div>
       </div>
       <div class="modal-body">
-        <div class="form-group">
-          <label class="form-label"><span class="required">*</span>学校</label>
-          <select id="opLogSchool" class="form-input">
-            <option value="">请选择学校</option>
-            <option>阳光小学</option>
-            <option>光明实验小学</option>
-            <option>希望小学</option>
-            <option>育才中学</option>
-            <option>蓝天幼儿园</option>
-            <option>建设路中学</option>
-            <option>红星实验小学</option>
-            <option>东风路小学</option>
-          </select>
+        <p style="margin-bottom:12px;color:var(--color-text-muted);font-size:13px;">选择要同步的一级部门，勾选后将同步该部门及所有子部门下的成员。同步后的用户角色默认为空，需手动配置。</p>
+        <div class="dept-select-actions" style="margin-bottom:12px;display:flex;gap:8px;">
+          <button class="btn btn-outline" onclick="toggleAllDepts()" style="font-size:13px;padding:6px 12px;">全选/取消</button>
         </div>
-        <div class="form-group">
-          <label class="form-label"><span class="required">*</span>记录类型</label>
-          <select id="opLogType" class="form-input">
-            <option value="">请选择类型</option>
-            <option>巡检</option>
-            <option>回访</option>
-            <option>服务</option>
-            <option>部署</option>
-            <option>开通</option>
-            <option>培训</option>
-            <option>其他</option>
-          </select>
-        </div>
-        <div class="form-group">
-          <label class="form-label"><span class="required">*</span>服务内容</label>
-          <textarea id="opLogContent" class="form-textarea" placeholder="请输入服务内容和结果..." rows="4"></textarea>
-        </div>
-        <div class="form-group">
-          <label class="form-label">服务时间</label>
-          <input id="opLogTime" type="datetime-local" class="form-input">
+        <div id="feishuDeptList" class="dept-list" style="max-height:320px;overflow-y:auto;border:1px solid var(--color-border);border-radius:8px;padding:8px;">
+          <div class="loading-spinner"></div>
         </div>
       </div>
       <div class="modal-footer">
-        <button class="btn btn-outline" onclick="closeModal('operationLogModal')">取消</button>
-        <button class="btn btn-primary" onclick="submitOperationLog()">提交</button>
+        <button class="btn btn-outline" onclick="closeModal('feishuDeptModal')">取消</button>
+        <button class="btn btn-primary" onclick="confirmFeishuSync()">开始同步</button>
       </div>
     </div>
   </div>
 
+  <!-- 运营人员配置弹窗 -->
+  <div id="operatorConfigModal" class="modal-mask" onclick="if(event.target===this)closeModal('operatorConfigModal')">
+    <div class="modal" style="max-width: 520px;">
+      <div class="modal-header">
+        <div class="modal-title">配置运营人员</div>
+        <button class="modal-close" onclick="closeModal('operatorConfigModal')">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg>
+        </button>
+      </div>
+      <div class="modal-body">
+        <div class="form-group">
+          <label class="form-label">选择运营人员（可多选）</label>
+          <div id="operatorConfigList" class="checkbox-group" style="max-height: 320px; overflow-y: auto;">
+            <!-- 动态渲染运营人员选项 -->
+          </div>
+        </div>
+      </div>
+      <div class="modal-footer">
+        <button class="btn btn-outline" onclick="closeModal('operatorConfigModal')">取消</button>
+        <button class="btn btn-primary" onclick="saveOperatorConfig()">保存</button>
+      </div>
+    </div>
+  </div>
+
+  <script src="js/api.js"></script>
   <script src="js/app.js"></script>
+  <script>
+    // ==================== 移动端功能 ====================
+
+    /* 打开抽屉 */
+    function openMobileDrawer() {
+      document.getElementById('mobileDrawer').classList.add('open');
+      document.getElementById('mobileDrawerOverlay').classList.add('show');
+      document.body.style.overflow = 'hidden';
+    }
+
+    /* 关闭抽屉 */
+    function closeMobileDrawer() {
+      document.getElementById('mobileDrawer').classList.remove('open');
+      document.getElementById('mobileDrawerOverlay').classList.remove('show');
+      document.body.style.overflow = '';
+    }
+
+    /* 返回学校列表 */
+    function goBackToSchoolList() {
+      showView('schoolList');
+    }
+
+    /* FAB 菜单切换 */
+    function toggleFabMenu() {
+      var menu = document.getElementById('fabMenu');
+      menu.classList.toggle('show');
+    }
+
+    function closeFabMenu() {
+      document.getElementById('fabMenu').classList.remove('show');
+    }
+
+    /* 移动端检测 */
+    function isMobile() {
+      return window.innerWidth <= 768;
+    }
+
+    /* 显示视图时更新Tab状态 */
+    var originalShowView = showView;
+    showView = function(viewId, navItem) {
+      // 调用原函数
+      if (originalShowView) {
+        originalShowView.call(this, viewId, navItem);
+      }
+      // 更新移动端Tab状态
+      document.querySelectorAll('.mobile-tabbar-item').forEach(function(tab) {
+        tab.classList.toggle('active', tab.getAttribute('data-view') === viewId);
+      });
+      // 更新抽屉导航状态
+      document.querySelectorAll('.mobile-drawer-item').forEach(function(item) {
+        item.classList.toggle('active', item.getAttribute('data-view') === viewId);
+      });
+      // 移动端显示/隐藏汉堡菜单
+      var hamburgers = document.querySelectorAll('.mobile-hamburger');
+      if (isMobile()) {
+        hamburgers.forEach(function(h) { h.style.display = 'flex'; });
+        // 移动端返回按钮
+        var backBtn = document.querySelector('.mobile-back-btn');
+        if (backBtn) {
+          backBtn.style.display = (viewId === 'schoolDetail') ? 'flex' : 'none';
+        }
+      } else {
+        hamburgers.forEach(function(h) { h.style.display = 'none'; });
+        var backBtn = document.querySelector('.mobile-back-btn');
+        if (backBtn) backBtn.style.display = 'none';
+      }
+      // 移动端显示/隐藏FAB按钮
+      var fab = document.getElementById('fabButton');
+      var fabMenu = document.getElementById('fabMenu');
+      if (fab && isMobile()) {
+        fab.style.display = 'flex';
+        if (fabMenu) fabMenu.style.display = '';
+      } else if (fab) {
+        fab.style.display = 'none';
+        if (fabMenu) fabMenu.style.display = 'none';
+      }
+      // 更新移动端用户信息
+      updateMobileUserInfo();
+    };
+
+    /* 更新移动端用户信息 */
+    function updateMobileUserInfo() {
+      var userName = document.getElementById('userName');
+      var userRole = document.getElementById('userRole');
+      var userAvatar = document.getElementById('userAvatar');
+      if (userName) {
+        document.getElementById('mobileUserName').textContent = userName.textContent;
+      }
+      if (userRole) {
+        document.getElementById('mobileUserRole').textContent = userRole.textContent;
+      }
+      if (userAvatar) {
+        document.getElementById('mobileUserAvatar').textContent = userAvatar.textContent;
+      }
+    }
+
+    /* 页面加载时初始化 */
+    document.addEventListener('DOMContentLoaded', function() {
+      if (isMobile()) {
+        // 移动端初始化
+        var fab = document.getElementById('fabButton');
+        var hamburger = document.getElementById('mobileHamburger');
+        if (fab) fab.style.display = 'flex';
+        if (hamburger) hamburger.style.display = 'flex';
+      }
+    });
+
+    /* 窗口大小变化时处理 */
+    window.addEventListener('resize', function() {
+      if (!isMobile()) {
+        closeMobileDrawer();
+        closeFabMenu();
+        var fab = document.getElementById('fabButton');
+        var hamburger = document.getElementById('mobileHamburger');
+        if (fab) fab.style.display = 'none';
+        if (hamburger) hamburger.style.display = 'none';
+      }
+    });
+  </script>
 </body>
 </html>

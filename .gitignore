@@ -24,3 +24,15 @@ Thumbs.db
 # Logs
 *.log
 npm-debug.log*
+
+# Database files (server data must NOT be version controlled)
+server/db/*.db
+server/db/*.db-journal
+server/db/*.db-wal
+data.db
+server/data.db
+server/data/
+
+# Local dev artifacts
+.screenshots/
+.trae-html-share-packages/
